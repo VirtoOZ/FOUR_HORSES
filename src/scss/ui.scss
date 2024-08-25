@@ -261,7 +261,7 @@ ol.counter {
 		height: 100%;
 		top: 0;
 		left: 0;
-		border: 1px solid $orangeColor;
+		// border: 1px solid $orangeColor;
 		border-radius: 50%;
 		transition: transform 0.3s ease 0s;
 		transform: scale(0);
@@ -277,7 +277,7 @@ ol.counter {
 }
 .swiper-pagination-bullet-active {
 	&::after {
-		background-color: $orangeColor;
+		// background-color: $orangeColor;
 	}
 	&::before {
 		transform: scale(1);

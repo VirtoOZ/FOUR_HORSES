@@ -124,11 +124,11 @@
 	// 		width: 100%;
 	// 	}
 	&_white {
-		color: $orangeColor;
+		// color: $orangeColor;
 		background-color: #fff;
 		@media (any-hover: hover) {
 			&:hover {
-				background-color: $orangeColor;
+				// background-color: $orangeColor;
 				color: #fff;
 			}
 		}

@@ -18,26 +18,27 @@
 //</Swiper>=================================
 
 //<Шрифт по умолчанию>=================================
-// $fontFamily: "Gilroy";
-$fontSize: 16px;
+$fontFamily: "GolosText";
+$fontSize: 20px;
 //</Шрифт по умолчанию>=================================
 
 //</ШРИФТЫ>=================================
 
 //<ПЕРЕМЕННЫЕ>=================================
 $minWidth: 320;
-$maxWidth: 1440; //ширина полотна
-$maxWidthContainer: 1270; //ограничивающий контейнер 1240 +30 pading
-$md1: $maxWidthContainer; //1092px
+$maxWidth: 1920; //ширина полотна
+$maxWidthContainer: 1262; //ограничивающий контейнер 1262 +40 padding
+$md1: $maxWidthContainer;
 $md2: 991.98;
 $md3: 767.98;
 $md4: 639.98;
 $md5: 479.98;
 
-$mainColor: #3a3a3a;
-$orangeColor: #e89f71;
-$grayColor: #898989;
-$darkGrayColor: #616161;
+$mainColor: #313131;
+$yellowColor: #fbce51;
+$darkGrayColor: #010000;
+$redColor: #f54932;
+$blueColor: #3057a2;
 //</ПЕРЕМЕННЫЕ>=================================
 
 //<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>=================================
@@ -61,12 +62,12 @@ body {
 	}
 }
 //</ОБОЛОЧКА>=================================
-
+Participants
 //<ОГРАНИЧИВАЮЩИЙ КОНТЕЙНЕР>=================================
 ._container {
 	max-width: $maxWidthContainer + px;
 	margin: 0px auto;
-	padding: 0px 15px;
+	padding: 0px 20px;
 	// @media (max-width: ($md3+px)) {
 	// 	padding: 0 10px;
 	// }
