@@ -25,10 +25,10 @@ $fontSize: 20px;
 //</ШРИФТЫ>=================================
 
 //<ПЕРЕМЕННЫЕ>=================================
-$minWidth: 320;
+$minWidth: 375;
 $maxWidth: 1920; //ширина полотна
 $maxWidthContainer: 1262; //ограничивающий контейнер 1262 +40 padding
-$md1: $maxWidthContainer;
+$md1: 1366;
 $md2: 991.98;
 $md3: 767.98;
 $md4: 639.98;
@@ -62,7 +62,7 @@ body {
 	}
 }
 //</ОБОЛОЧКА>=================================
-Participants
+
 //<ОГРАНИЧИВАЮЩИЙ КОНТЕЙНЕР>=================================
 ._container {
 	max-width: $maxWidthContainer + px;
@@ -86,8 +86,8 @@ Participants
 //@import "datepicker";
 // @import "../scss/libs/gallery/lightgallery";
 // @import "popup";
-// @import "header";
-// @import "footer";
+@import "header";
+@import "footer";
 // @import "home";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>=================================
 
@@ -95,6 +95,7 @@ Participants
 .page {
 	flex: 1 1 auto;
 }
+
 //=================================
 //=================================
 

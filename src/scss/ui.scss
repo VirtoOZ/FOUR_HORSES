@@ -1,22 +1,108 @@
 //<ОСНОВНОЙ БЛОК>=================================
-._footer-title {
-	@include adaptiv-value("font-size", 23, 19, 1);
-	line-height: calc((29 / 24) * 100%);
-	color: #000;
-	font-weight: 700;
+.button {
+	@media (min-width: ($md4+px)) {
+		flex: 0 0 263px;
+	}
+	// .button_black
+	&_black,
+	&_border {
+		padding-left: 20px;
+		padding-right: 20px;
+		border-radius: 66px;
+		text-align: center;
+		@include adaptiv-value("padding-top", 18, 16, 1);
+		@include adaptiv-value("padding-bottom", 18, 16, 1);
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 130%;
+		transition:
+			clolor 0.3s ease 0s,
+			background-color 0.3s ease 0s;
+	}
+	// .button_black
+	&_black {
+		background-color: #1f1f1f;
+		color: #fff;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $yellowColor;
+				color: #1f1f1f;
+			}
+		}
+	}
+	// .button_border
+	&_border {
+		color: #1f1f1f;
+		border: 2px solid #1f1f1f;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #1f1f1f;
+				color: #fff;
+			}
+		}
+		@media (max-width: ($md5+px)) {
+			background-color: rgba(255, 255, 255, 0.9);
+			border: 2px solid rgba(255, 255, 255, 0.9);
+		}
+	}
+	// .button_blue
+	&_blue {
+		text-align: center;
+		color: $blueColor;
+		// line-height: 120%; /* 19.2px */
+		border-radius: 62px;
+		border: 1px solid $blueColor;
+		padding: 11px;
+		font-size: 16px;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $blueColor;
+				color: #fff;
+			}
+		}
+	}
 }
-._title {
-	@include adaptiv-value("font-size", 40, 24, 1);
-	font-weight: 700;
-	line-height: 120%;
-	text-align: center;
+.arrow-left,
+.arrow-right {
+	&_black,
+	&_disabled {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		position: relative;
+		background-color: #000;
+		transition: background-color 0.3s ease 0s;
+		&::before {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: url("../img/icons/arrow-right.svg") center no-repeat;
+		}
+	}
+	// .arrow_black
+	&_black {
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $yellowColor;
+			}
+		}
+	}
+	// .arrow_disabled
+	&_disabled {
+		background-color: #d6d6d6;
+	}
 }
-._flyImage._ibg {
-	opacity: 1;
-	position: fixed;
-	z-index: 100;
-	transition: all 1s ease 0s;
+.arrow-left {
+	&_black,
+	&_disabled {
+		transform: rotate(-180deg);
+	}
 }
+
 //<?ОСНОВНОЙ БЛОК>=================================
 
 //<ГОТОВЫЕ КЛАССЫ>=================================
