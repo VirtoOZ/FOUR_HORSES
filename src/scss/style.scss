@@ -45,6 +45,7 @@ $blueColor: #3057a2;
 @import "null";
 body {
 	color: $mainColor;
+	line-height: 120%;
 	&._lock {
 		overflow: hidden;
 	}
@@ -95,9 +96,98 @@ body {
 .page {
 	flex: 1 1 auto;
 }
+//<ОБЩИЕ СТИЛИ>=================================
 
-//=================================
-//=================================
+//<ОБЩИЕ СТИЛИ>=================================
+.title {
+	font-family: Merriweather;
+	font-size: 36px;
+	font-weight: 400;
+	line-height: 135%; /* 48.6px */
+	text-transform: uppercase;
+}
+//<MAIN>=================================
+.page {
+	// .page__main
+	&__main {
+	}
+}
+.main {
+	// .main__container
+	&__container {
+	}
+	// .main__body
+	&__body {
+		display: flex;
+		justify-content: space-between;
+	}
+	// .main__content
+	&__content {
+		flex: 0 0 542px;
+	}
+	// .main__media
+	&__media {
+	}
+	// .main__running-line
+	&__running-line {
+	}
+}
+.main-content {
+	// .main-content__title
+	&__title {
+		@include adaptiv-value("font-size", 60, 36, 1);
+		line-height: 110%; /* 66px */
+		&:not(:last-child) {
+			margin: 0px 0px 24px 0px;
+		}
+		p {
+			text-align: center;
+		}
+	}
+	// .main-content__text
+	&__text {
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 130%; /* 23.4px */
+	}
+	// .main-content__buttons
+	&__buttons {
+		display: flex;
+	}
+	// .main-content__button
+	&__button {
+	}
+}
+.main-media {
+	// .main-media__sun
+	&__sun {
+		// .main-media__sun_text
+		&_text {
+		}
+	}
+	// .main-media__chess
+	&__chess {
+		// .main-media__chess_king
+		&_king {
+		}
+		// .main-media__chess_queen
+		&_queen {
+		}
+		// .main-media__chess_horse
+		&_horse {
+		}
+		// .main-media__chess_pawn
+		&_pawn {
+			background: url("../img/main/chess-pawn.png") 0 0 no-repeat;
+			width: 100px;
+			height: 100px;
+		}
+	}
+	// .main-media__city
+	&__city {
+	}
+}
+//</MAIN>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {

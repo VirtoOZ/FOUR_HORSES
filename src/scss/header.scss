@@ -8,14 +8,18 @@
 	}
 	// .header__body
 	&__body {
-		min-height: 87;
+		display: flex;
+		min-height: 87px;
 		@media (max-width: ($md1+px)) {
 			@include adaptiv-value("min-height", 87, 67, 1);
+		}
+		> *:not(:last-child) {
+			margin: 0px 10px 0px 0px;
 		}
 	}
 	// .header__logo
 	&__logo {
-		padding: 27px 0px;
+		// padding: 27px 0px;
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;

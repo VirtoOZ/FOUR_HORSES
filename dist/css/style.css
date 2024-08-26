@@ -136,6 +136,7 @@ h6 {
 /*--------------------*/
 body {
   color: #313131;
+  line-height: 120%;
 }
 body._lock {
   overflow: hidden;
@@ -613,6 +614,11 @@ textarea.input {
 		}
 	}
 } */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (min-width: 639.98px) {
   .button {
     flex: 0 0 263px;
@@ -927,7 +933,8 @@ ol.counter li::before {
 }
 
 .header__body {
-  min-height: 87;
+  display: flex;
+  min-height: 87px;
 }
 @media (max-width: 1366px) {
   .header__body {
@@ -939,8 +946,10 @@ ol.counter li::before {
     min-height: calc(67px + 20 * ((100vw - 320px) / 942));
   }
 }
+.header__body > *:not(:last-child) {
+  margin: 0px 10px 0px 0px;
+}
 .header__logo {
-  padding: 27px 0px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -966,6 +975,52 @@ ol.counter li::before {
   flex: 1 1 auto;
 }
 
+.title {
+  font-family: Merriweather;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 135%;
+  /* 48.6px */
+  text-transform: uppercase;
+}
+
+.main__body {
+  display: flex;
+  justify-content: space-between;
+}
+.main__content {
+  flex: 0 0 542px;
+}
+.main-content__title {
+  font-size: 60px;
+  line-height: 110%;
+  /* 66px */
+}
+@media (max-width: 1262px) {
+  .main-content__title {
+    font-size: calc(36px + 24 * ((100vw - 320px) / 942));
+  }
+}
+.main-content__title:not(:last-child) {
+  margin: 0px 0px 24px 0px;
+}
+.main-content__title p {
+  text-align: center;
+}
+.main-content__text {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 130%;
+  /* 23.4px */
+}
+.main-content__buttons {
+  display: flex;
+}
+.main-media__chess_pawn {
+  background: url("../img/main/chess-pawn.png") 0 0 no-repeat;
+  width: 100px;
+  height: 100px;
+}
 /* .breadcrumbs {
 	overflow: auto;
 	margin: 0px 0px 20px 0px;
