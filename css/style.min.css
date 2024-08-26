@@ -666,7 +666,7 @@ textarea.input {
     color: #fff;
   }
 }
-@media (max-width: 479.98px) {
+@media (max-width: 639.98px) {
   .button_border {
     background-color: rgba(255, 255, 255, 0.9);
     border: 2px solid rgba(255, 255, 255, 0.9);
@@ -936,12 +936,12 @@ ol.counter li::before {
   display: flex;
   min-height: 87px;
 }
-@media (max-width: 1366px) {
+@media (max-width: 1365.98px) {
   .header__body {
     min-height: 87px;
   }
 }
-@media (max-width: 1366px) and (max-width: 1262px) {
+@media (max-width: 1365.98px) and (max-width: 1262px) {
   .header__body {
     min-height: calc(67px + 20 * ((100vw - 320px) / 942));
   }
@@ -974,7 +974,6 @@ ol.counter li::before {
 .page {
   flex: 1 1 auto;
 }
-
 .title {
   font-family: Merriweather;
   font-size: 36px;
@@ -983,13 +982,22 @@ ol.counter li::before {
   /* 48.6px */
   text-transform: uppercase;
 }
+@media (max-width: 1262px) {
+  .title {
+    font-size: calc(28px + 8 * ((100vw - 320px) / 942));
+  }
+}
 
+.main__wrapper {
+  position: relative;
+}
 .main__body {
   display: flex;
   justify-content: space-between;
 }
 .main__content {
-  flex: 0 0 542px;
+  flex: 0 1 542px;
+  margin: 0px 0px 132px 0px;
 }
 .main-content__title {
   font-size: 60px;
@@ -1001,11 +1009,14 @@ ol.counter li::before {
     font-size: calc(36px + 24 * ((100vw - 320px) / 942));
   }
 }
+.main-content__title p {
+  text-align: right;
+}
+.main-content__title p:not(:last-child) {
+  text-align: center;
+}
 .main-content__title:not(:last-child) {
   margin: 0px 0px 24px 0px;
-}
-.main-content__title p {
-  text-align: center;
 }
 .main-content__text {
   font-size: 18px;
@@ -1013,14 +1024,36 @@ ol.counter li::before {
   line-height: 130%;
   /* 23.4px */
 }
-.main-content__buttons {
-  display: flex;
+.main-content__text:not(:last-child) {
+  margin-bottom: 40px;
 }
-.main-media__chess_pawn {
-  background: url("../img/main/chess-pawn.png") 0 0 no-repeat;
-  width: 100px;
-  height: 100px;
+@media (max-width: 1262px) {
+  .main-content__text:not(:last-child) {
+    margin-bottom: calc(32px + 8 * ((100vw - 320px) / 942));
+  }
 }
+@media (min-width: 639.98px) {
+  .main-content__buttons {
+    display: flex;
+  }
+}
+.main-content__button:not(:last-child) {
+  margin: 0px 16px 0px 0px;
+}
+@media (max-width: 639.98px) {
+  .main-content__button:not(:last-child) {
+    margin: 0px 0px 14px 0px;
+  }
+}
+
+.main-media__city {
+  position: absolute;
+  width: 100%;
+  height: 77%;
+  right: 10%;
+  bottom: 0;
+}
+
 /* .breadcrumbs {
 	overflow: auto;
 	margin: 0px 0px 20px 0px;
