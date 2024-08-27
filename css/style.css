@@ -666,7 +666,7 @@ textarea.input {
     color: #fff;
   }
 }
-@media (max-width: 639.98px) {
+@media (max-width: 479.98px) {
   .button_border {
     background-color: rgba(255, 255, 255, 0.9);
     border: 2px solid rgba(255, 255, 255, 0.9);
@@ -1068,14 +1068,21 @@ ol.counter li::before {
   border-radius: 50%;
 }
 .main-media__sun_text img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  bottom: -2.5%;
-  right: 2.5%;
-  object-fit: cover;
+  padding: 13px;
 }
 .main-media__chess {
+  position: absolute;
+  z-index: 3;
+  padding: 0px 0px 15.7616261164% 0px;
+}
+.main-media__chess_king {
+  width: 6.3923621805%;
+  right: 0;
+}
+.main-media__chess_horse {
+  display: none;
+}
+.main-media__chess_pawn {
   display: none;
 }
 .main-media__city {
