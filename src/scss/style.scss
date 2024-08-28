@@ -105,6 +105,7 @@ body {
 	}
 	// .page__session
 	&__session {
+		@include adaptiv-value("margin-bottom", 200, 120, 1);
 	}
 }
 //<ОБЩИЕ СТИЛИ>=================================
@@ -394,13 +395,36 @@ body {
 	}
 	// .session__body
 	&__body {
-		display: flex;
-		// align-items: center;
+		@media (min-width: ($md2+px)) {
+			display: flex;
+			align-items: flex-start;
+		}
+		@media (max-width: ($md2+px)) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 	// .session__media
 	&__media {
-		flex: 0 0 474px;
-		padding: 0px 0px 47% 0px;
+		@media (min-width: ($md2+px)) {
+			position: relative;
+			flex: 0 0 calc(474 / 1222 * 100%);
+			padding: 0px 0px 43% 0px;
+		}
+		@media (max-width: ($md2+px)) {
+			padding: 0px 0px 420px 0px;
+			width: 374px;
+			// text-align: center;
+			// display: inline-block;
+			margin: 0px 0px 19px 0px;
+		}
+
+		img {
+			@media (max-width: ($md5+px)) {
+				// margin: 0px -20px;
+			}
+		}
 	}
 	// .session__content
 	&__content {
@@ -412,10 +436,11 @@ body {
 .content-session {
 	// .content-session__title
 	&__title {
-		margin: 0px 0px 60px 0px;
+		@include adaptiv-value("margin-bottom", 60, 44, 1);
 	}
 	// .content-session__table
 	&__table {
+		@include adaptiv-value("margin-bottom", 48, 40, 1);
 	}
 	// .content-session__link
 	&__link {
@@ -424,49 +449,50 @@ body {
 .table-session {
 	// .table-session__body
 	&__body {
+		position: relative;
 		display: grid;
 		grid-template: repeat(5, 1fr) / 1fr 1fr;
 		gap: 32px;
+		align-items: center;
+		&::before {
+			content: "";
+			top: 0;
+			left: 50%;
+			width: 2px;
+			height: 100%;
+			position: absolute;
+			background-color: #d0d0d0;
+		}
 	}
 	// .table-session__item
 	&__item {
-		// .table-session__item_name
-		&::after {
-			position: absolute;
-			bottom: -17px;
-			left: 0;
-			content: "";
-			width: 110%;
-			height: 2px;
-			background-color: #d0d0d0;
-		}
-		&_name {
-			font-weight: 400;
-		}
-		// .table-session__item_option
-
-		.table-session__item_option ::after {
-			:last-child {
-				height: 0;
-			}
-		}
 		&_name,
 		&_option {
 			font-size: 20px;
 			position: relative;
 			line-height: 120%; /* 24px */
-		}
-		&_option {
 			font-weight: 600;
-			&::after {
-				width: 100%;
-			}
 			span {
 				text-decoration: $redColor line-through;
 			}
 		}
+		&_name {
+			font-weight: 400;
+		}
+		&_option:not(:last-child) {
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: -17px;
+				right: 0;
+				width: 210%;
+				height: 2px;
+				background-color: #d0d0d0;
+			}
+		}
 	}
 }
+
 //</SESSION>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
