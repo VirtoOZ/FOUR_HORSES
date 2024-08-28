@@ -97,6 +97,11 @@ body {
 	flex: 1 1 auto;
 	// .page__main
 	&__main {
+		@include adaptiv-value("margin-bottom", 80, 48, 1);
+	}
+	// .page__visit
+	&__visit {
+		@include adaptiv-value("margin-bottom", 64, 21, 1);
 	}
 }
 //<ОБЩИЕ СТИЛИ>=================================
@@ -108,28 +113,32 @@ body {
 	font-weight: 400;
 	line-height: 135%; /* 48.6px */
 	text-transform: uppercase;
+	span {
+		color: $redColor;
+		font-weight: 700;
+	}
 }
 //<MAIN>=================================
 .main {
+	// background: rgba(251, 206, 81, 0.5) url("../img/main/relief.png") center/cover no-repeat;
 	// .main__wrapper
 	&__wrapper {
-		// display: flex;
 		position: relative;
-		// max-width:1600px;
 	}
 	// .main__container
 	&__container {
-		// position: relative;
 	}
 	// .main__body
 	&__body {
+		@include adaptiv-value("height", 576, 684, 1);
 		display: flex;
 		justify-content: space-between;
 	}
 	// .main__content
 	&__content {
 		flex: 0 1 542px;
-		margin: 0px 0px 132px 0px;
+		// @include adaptiv-value("margin-bottom", 132, 281, 1);
+		// margin: 0px 0px 132px 0px;
 	}
 	// .main__media
 	&__media {
@@ -138,7 +147,55 @@ body {
 	&__running-line {
 	}
 }
+.running-line {
+	position: relative;
+	z-index: 1;
+	margin: 0px auto;
+	overflow: hidden;
+	@include adaptiv-value("width", 2223, 1640, 1);
+	background-color: #f54932;
+	// .running-line__body
+	&__body {
+		display: flex;
+		width: 200%;
+		animation: running-line 15s linear infinite;
+		p {
+			width: 100%;
+			@include adaptiv-value("max-height", 60, 38, 1);
+			// @include adaptiv-value("width", 1920, auto, 1);
+			white-space: nowrap;
+			@include adaptiv-value("padding-top", 18, 10, 1);
+			@include adaptiv-value("padding-bottom", 18, 10, 1);
+			color: #fff;
+			@include adaptiv-value("font-size", 22, 16, 1);
+			line-height: 110%; /* 24.2px */
+			text-transform: uppercase;
+			span {
+				&::after {
+					margin: 0px 12px;
+					display: inline-block;
+					content: "";
+					width: 6px;
+					height: 6px;
+					background-color: #fff;
+					border-radius: 50%;
+					transform: translate(0px, -50%);
+				}
+			}
+		}
+		@keyframes running-line {
+			0% {
+				transform: translateX(0%);
+			}
+			100% {
+				transform: translateX(-50%);
+			}
+		}
+	}
+}
 .main-content {
+	position: relative;
+	z-index: 1;
 	// .main-content__title
 	&__title {
 		@include adaptiv-value("font-size", 60, 36, 1);
@@ -180,74 +237,152 @@ body {
 		}
 	}
 }
-.main-media {
-	// position: relative;
-	position: absolute;
-	width: calc(1623.5 / 1222 * 100%);
-	right: calc(-214.5 / 1222 * 100%);
-	bottom: 0;
-	// .main-media__sun
+.main-wrapper {
+	// .main-wrapper__sun
 	&__sun {
 		position: absolute;
-		// z-index: 3;
-		width: calc(660 / 1623.5 * 100%);
-		height: calc(660 / 452.5 * 100%);
-		bottom: calc(84 / 452.5 * 100%);
-		right: calc(174 / 1623.5 * 100%);
-		&_arc {
-			width: 100%;
-			height: 100%;
-			bottom: 0;
-			right: 0;
-			background-color: #fbce51;
-			border-radius: 50%;
-		}
-		// .main-media__sun_text
+		@include adaptiv-value("padding-bottom", 660, 297.47, 1);
+		@include adaptiv-value("width", 660, 297.47, 1);
+		@include adaptiv-value("margin-right", -41, 27.5, 1);
+		@include adaptiv-value("bottom", 84, 66.69, 1);
+		right: 0;
+		background-color: rgb(251, 206, 81, 100%);
+		border-radius: 50%;
+		transition: transform 0.3s ease 0s;
 		&_text {
+			position: static;
 			img {
-				padding: 13px;
+				@include adaptiv-value("padding", 13, 6, 1);
+				animation: oreol-text 20s infinite linear;
+			}
+			@keyframes oreol-text {
+				0% {
+					transform: rotate(0deg);
+				}
+				50% {
+					transform: rotate(-180deg);
+				}
+				100% {
+					transform: rotate(-360deg);
+				}
 			}
 		}
+		@media (max-width: ($md3+px)) {
+			@include adaptiv-value("margin-right", -1000, 27.5, 1);
+			@include adaptiv-value("bottom", -350, 84, 1);
+		}
+		@media (min-width: ($md3+px)) {
+			@include adaptiv-value("padding-bottom", 660, -200, 1);
+			@include adaptiv-value("width", 660, -200, 1);
+			@include adaptiv-value("margin-right", -41, 200, 1);
+			@include adaptiv-value("bottom", 84, 0, 1);
+		}
 	}
-	// .main-media__chess
+	// .main-wrapper__chess
 	&__chess {
-		position: absolute;
-		z-index: 3;
-		padding: 0px 0px calc(255.89 / 1623.5 * 100%) 0px;
-
-		// width: calc(660 / 1623.5 * 100%);
-		// height: calc(660 / 452.5 * 100%);
-		// bottom: calc(84 / 452.5 * 100%);
-		// right: calc(174 / 1623.5 * 100%);
-
-		// .main-media__chess_king
+		// .main-wrapper__chess_king
 		&_king {
-			width: calc(103.78 / 1623.5 * 100%);
-			right: 0;
-			img {
+			position: absolute;
+			@include adaptiv-value("width", 103.78, 47.44, 1);
+			@include adaptiv-value("padding-bottom", 255.89, 116.98, 1);
+			@include adaptiv-value("right", 445.98, 238.77, 1);
+			@include adaptiv-value("bottom", 169.03, 113.4, 1);
+			transform: rotate(-6deg);
+		}
+		// .main-wrapper__chess_queen
+		&_queen {
+			position: absolute;
+			@include adaptiv-value("width", 113.16, 46.98, 1);
+			@include adaptiv-value("padding-bottom", 252.44, 104.8, 1);
+			@include adaptiv-value("right", 101.21, 72.45, 1);
+			@include adaptiv-value("bottom", 275.9, 166.91, 1);
+			transform: rotate(15deg);
+		}
+		// .main-wrapper__chess_horse
+		&_horse {
+			position: absolute;
+			@include adaptiv-value("width", 153.87, 76.71, 1);
+			@include adaptiv-value("padding-bottom", 243.99, 121.63, 1);
+			@include adaptiv-value("right", 281.38, 121.73, 1);
+			@include adaptiv-value("bottom", -38, -16, 1);
+			z-index: 1;
+			transform: rotate(-10.6deg);
+		}
+		// .main-wrapper__chess_pawn
+		&_pawn {
+			position: absolute;
+			@include adaptiv-value("width", 82.61, 41, 1);
+			@include adaptiv-value("padding-bottom", 122.22, 61, 1);
+			right: -29.45px;
+			bottom: 19.58px;
+			z-index: 1;
+			transition:
+				// visibility 0.3s ease 0s,
+				opacity 0.3s ease 0s;
+			opacity: 1;
+			// visibility: visible;
+			@media (max-width: ($md5+px)) {
+				opacity: 0;
+				// visibility: hidden;
 			}
 		}
-		// .main-media__chess_queen
-		&_queen {
-			// position: relative;
-			// padding: 0px 0px 10% 0px;
-		}
-		// .main-media__chess_horse
-		&_horse {
-			display: none;
-		}
-		// .main-media__chess_pawn
-		&_pawn {
-			display: none;
-		}
 	}
-	// .main-media__city
+	// .main-wrapper__out
+	&__out {
+		position: absolute;
+		@include adaptiv-value("margin-right", -214.5, -129.43, 1);
+		@include adaptiv-value("width", 1623.5, 885.53, 1);
+		right: 0;
+		bottom: 0;
+	}
+	// .main-wrapper__city
 	&__city {
-		// display: none;
 		padding: 0px 0px calc(452.5 / 1623.5 * 100%) 0px;
 	}
 }
 //</MAIN>=================================
+
+//<VISIT>=================================
+.visit {
+	// .visit__container
+	&__container {
+	}
+	// .visit__body
+	&__body {
+		justify-content: center;
+		display: flex;
+		align-items: center;
+		@media (max-width: ($md3+px)) {
+			flex-wrap: wrap;
+		}
+	}
+	// .visit__content
+	&__content {
+		flex: 1 1 auto;
+	}
+	// .visit__title
+	&__title {
+		@include adaptiv-value("padding-right", 64, 0, 1);
+		@media (max-width: ($md3+px)) {
+			p {
+				&:not(:last-child) {
+					margin: 0px 0px 24px 0px;
+				}
+			}
+		}
+	}
+	// .visit__image
+	&__image {
+		padding: 0px 0px calc(250 / 1222 * 100%) 0px;
+		flex: 0 0 calc(394 / 1222 * 100%);
+		@media (max-width: ($md3+px)) {
+			padding: 0px 0px 212px 0px;
+			width: 335px;
+			margin: 0px auto 24px auto;
+		}
+	}
+}
+//</VISIT>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {
