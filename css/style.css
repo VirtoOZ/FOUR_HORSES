@@ -990,6 +990,15 @@ ol.counter li::before {
     margin-bottom: calc(21px + 43 * ((100vw - 375px) / 887));
   }
 }
+.page__session {
+  margin-bottom: 200px;
+}
+@media (max-width: 1262px) {
+  .page__session {
+    margin-bottom: calc(120px + 80 * ((100vw - 375px) / 887));
+  }
+}
+
 .title {
   font-family: Merriweather;
   font-size: 36px;
@@ -1411,12 +1420,32 @@ ol.counter li::before {
   }
 }
 
-.session__body {
-  display: flex;
+@media (min-width: 991.98px) {
+  .session__body {
+    display: flex;
+    align-items: flex-start;
+  }
 }
-.session__media {
-  flex: 0 0 474px;
-  padding: 0px 0px 47% 0px;
+@media (max-width: 991.98px) {
+  .session__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (min-width: 991.98px) {
+  .session__media {
+    position: relative;
+    flex: 0 0 38.7888707038%;
+    padding: 0px 0px 43% 0px;
+  }
+}
+@media (max-width: 991.98px) {
+  .session__media {
+    padding: 0px 0px 420px 0px;
+    width: 374px;
+    margin: 0px 0px 19px 0px;
+  }
 }
 .session__content {
   flex: 1 1 auto;
@@ -1430,42 +1459,58 @@ ol.counter li::before {
 }
 
 .content-session__title {
-  margin: 0px 0px 60px 0px;
+  margin-bottom: 60px;
+}
+@media (max-width: 1262px) {
+  .content-session__title {
+    margin-bottom: calc(44px + 16 * ((100vw - 375px) / 887));
+  }
+}
+.content-session__table {
+  margin-bottom: 48px;
+}
+@media (max-width: 1262px) {
+  .content-session__table {
+    margin-bottom: calc(40px + 8 * ((100vw - 375px) / 887));
+  }
 }
 .table-session__body {
+  position: relative;
   display: grid;
   grid-template: repeat(5, 1fr)/1fr 1fr;
   gap: 32px;
+  align-items: center;
 }
-.table-session__item::after {
-  position: absolute;
-  bottom: -17px;
-  left: 0;
+.table-session__body::before {
   content: "";
-  width: 110%;
-  height: 2px;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  position: absolute;
   background-color: #d0d0d0;
-}
-.table-session__item_name {
-  font-weight: 400;
-}
-.table-session__item .table-session__item_option ::after :last-child {
-  height: 0;
 }
 .table-session__item_name, .table-session__item_option {
   font-size: 20px;
   position: relative;
   line-height: 120%;
   /* 24px */
-}
-.table-session__item_option {
   font-weight: 600;
 }
-.table-session__item_option::after {
-  width: 100%;
-}
-.table-session__item_option span {
+.table-session__item_name span, .table-session__item_option span {
   text-decoration: #f54932 line-through;
+}
+.table-session__item_name {
+  font-weight: 400;
+}
+.table-session__item_option:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -17px;
+  right: 0;
+  width: 210%;
+  height: 2px;
+  background-color: #d0d0d0;
 }
 
 /* .breadcrumbs {
