@@ -103,6 +103,9 @@ body {
 	&__visit {
 		@include adaptiv-value("margin-bottom", 64, 21, 1);
 	}
+	// .page__session
+	&__session {
+	}
 }
 //<ОБЩИЕ СТИЛИ>=================================
 
@@ -383,6 +386,88 @@ body {
 	}
 }
 //</VISIT>=================================
+
+//<SESSION>=================================
+.session {
+	// .session__container
+	&__container {
+	}
+	// .session__body
+	&__body {
+		display: flex;
+		// align-items: center;
+	}
+	// .session__media
+	&__media {
+		flex: 0 0 474px;
+		padding: 0px 0px 47% 0px;
+	}
+	// .session__content
+	&__content {
+		flex: 1 1 auto;
+		padding: 0px 0px 0px 44px;
+		@include adaptiv-value("padding-left", 44, 0, 1);
+	}
+}
+.content-session {
+	// .content-session__title
+	&__title {
+		margin: 0px 0px 60px 0px;
+	}
+	// .content-session__table
+	&__table {
+	}
+	// .content-session__link
+	&__link {
+	}
+}
+.table-session {
+	// .table-session__body
+	&__body {
+		display: grid;
+		grid-template: repeat(5, 1fr) / 1fr 1fr;
+		gap: 32px;
+	}
+	// .table-session__item
+	&__item {
+		// .table-session__item_name
+		&::after {
+			position: absolute;
+			bottom: -17px;
+			left: 0;
+			content: "";
+			width: 110%;
+			height: 2px;
+			background-color: #d0d0d0;
+		}
+		&_name {
+			font-weight: 400;
+		}
+		// .table-session__item_option
+
+		.table-session__item_option ::after {
+			:last-child {
+				height: 0;
+			}
+		}
+		&_name,
+		&_option {
+			font-size: 20px;
+			position: relative;
+			line-height: 120%; /* 24px */
+		}
+		&_option {
+			font-weight: 600;
+			&::after {
+				width: 100%;
+			}
+			span {
+				text-decoration: $redColor line-through;
+			}
+		}
+	}
+}
+//</SESSION>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {

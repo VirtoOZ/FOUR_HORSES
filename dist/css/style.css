@@ -990,7 +990,6 @@ ol.counter li::before {
     margin-bottom: calc(21px + 43 * ((100vw - 375px) / 887));
   }
 }
-
 .title {
   font-family: Merriweather;
   font-size: 36px;
@@ -1410,6 +1409,63 @@ ol.counter li::before {
     width: 335px;
     margin: 0px auto 24px auto;
   }
+}
+
+.session__body {
+  display: flex;
+}
+.session__media {
+  flex: 0 0 474px;
+  padding: 0px 0px 47% 0px;
+}
+.session__content {
+  flex: 1 1 auto;
+  padding: 0px 0px 0px 44px;
+  padding-left: 44px;
+}
+@media (max-width: 1262px) {
+  .session__content {
+    padding-left: calc(0px + 44 * ((100vw - 375px) / 887));
+  }
+}
+
+.content-session__title {
+  margin: 0px 0px 60px 0px;
+}
+.table-session__body {
+  display: grid;
+  grid-template: repeat(5, 1fr)/1fr 1fr;
+  gap: 32px;
+}
+.table-session__item::after {
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+  content: "";
+  width: 110%;
+  height: 2px;
+  background-color: #d0d0d0;
+}
+.table-session__item_name {
+  font-weight: 400;
+}
+.table-session__item .table-session__item_option ::after :last-child {
+  height: 0;
+}
+.table-session__item_name, .table-session__item_option {
+  font-size: 20px;
+  position: relative;
+  line-height: 120%;
+  /* 24px */
+}
+.table-session__item_option {
+  font-weight: 600;
+}
+.table-session__item_option::after {
+  width: 100%;
+}
+.table-session__item_option span {
+  text-decoration: #f54932 line-through;
 }
 
 /* .breadcrumbs {
