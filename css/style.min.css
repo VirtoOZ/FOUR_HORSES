@@ -1490,6 +1490,14 @@ ol.counter li::before {
   position: absolute;
   background-color: #d0d0d0;
 }
+@media (max-width: 767.98px) {
+  .table-session__body {
+    grid-template: repeat(5, 1fr)/1fr;
+  }
+  .table-session__body::before {
+    display: none;
+  }
+}
 .table-session__item_name, .table-session__item_option {
   font-size: 20px;
   position: relative;
@@ -1511,6 +1519,12 @@ ol.counter li::before {
   width: 210%;
   height: 2px;
   background-color: #d0d0d0;
+}
+@media (max-width: 767.98px) {
+  .table-session__item_option:not(:last-child)::after {
+    right: 0;
+    width: 100%;
+  }
 }
 
 /* .breadcrumbs {
