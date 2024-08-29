@@ -463,6 +463,12 @@ body {
 			position: absolute;
 			background-color: #d0d0d0;
 		}
+		@media (max-width: ($md3+px)) {
+			grid-template: repeat(5, 1fr) / 1fr;
+			&::before {
+				display: none;
+			}
+		}
 	}
 	// .table-session__item
 	&__item {
@@ -477,6 +483,9 @@ body {
 			}
 		}
 		&_name {
+			@media (max-width: ($md3+px)) {
+			}
+
 			font-weight: 400;
 		}
 		&_option:not(:last-child) {
@@ -490,9 +499,91 @@ body {
 				background-color: #d0d0d0;
 			}
 		}
+		@media (max-width: ($md3+px)) {
+			&_option:not(:last-child) {
+				&::after {
+					right: 0;
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 
+// .table-session {
+// 	// .table-session__body
+// 	&__body {
+// 		position: relative;
+// 		display: grid;
+// 		grid-template: repeat(5, 1fr) / 1fr 1fr;
+// 		// gap: 32px;
+// 		align-items: center;
+// 		&::before {
+// 			content: "";
+// 			top: 0;
+// 			left: 50%;
+// 			width: 2px;
+// 			height: 100%;
+// 			position: absolute;
+// 			background-color: #d0d0d0;
+// 		}
+// 		@media (max-width: ($md3+px)) {
+// 			grid-template: repeat(5, 1fr) / 1fr;
+// 			&::before {
+// 				display: none;
+// 			}
+// 		}
+// 	}
+// 	// .table-session__item
+// 	&__item {
+// 		// grid-column: 1 / 2;
+// 		// grid-row: 0 / 1;
+// 		&_name,
+// 		&_option {
+// 			font-size: 20px;
+// 			position: relative;
+// 			line-height: 120%; /* 24px */
+// 			font-weight: 600;
+// 			span {
+// 				text-decoration: $redColor line-through;
+// 			}
+// 		}
+// 		&_name {
+// 			margin: 14px 0px 12px 0px;
+// 			&:first-child {
+// 				margin: 0;
+// 			}
+// 			font-weight: 400;
+// 		}
+// 		&_option:not(:last-child) {
+// 			margin: 0px 0px 14px 0px;
+// 			&::after {
+// 				content: "";
+// 				position: absolute;
+// 				bottom: -18px;
+// 				right: 0;
+// 				width: 210%;
+// 				height: 2px;
+// 				background-color: #d0d0d0;
+// 			}
+// 		}
+// 		@media (max-width: ($md2+px)) {
+// 			&_option:not(:last-child) {
+// 				&::after {
+// 					width: 200%;
+// 				}
+// 			}
+// 		}
+// 		@media (max-width: ($md3+px)) {
+// 			&_option:not(:last-child) {
+// 				&::after {
+// 					right: 0;
+// 					width: 100%;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 //</SESSION>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
