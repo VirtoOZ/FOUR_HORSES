@@ -429,8 +429,10 @@ body {
 	// .session__content
 	&__content {
 		flex: 1 1 auto;
-		padding: 0px 0px 0px 44px;
-		@include adaptiv-value("padding-left", 44, 0, 1);
+		// padding: 0px 0px 0px 44px;
+		@media (min-width: ($md3+px)) {
+			@include adaptiv-value("padding-left", 44, 0, 1);
+		}
 	}
 }
 .content-session {
@@ -444,6 +446,10 @@ body {
 	}
 	// .content-session__link
 	&__link {
+		display: block;
+		@include adaptiv-value("font-size", 20, 18, 1);
+		color: $blueColor;
+		line-height: 120%; /* 24px */
 	}
 }
 .table-session {
@@ -459,35 +465,33 @@ body {
 			position: absolute;
 			background-color: #d0d0d0;
 		}
-		@media (min-width: ($md3+px)) {
-			// grid-template: repeat(5, 1fr) / 1fr 1fr;
-		}
 		@media (max-width: ($md3+px)) {
 			display: grid;
 			align-items: center;
 			// gap: 32px;
-			grid-template: repeat(5, 1fr) / 1fr;
+			grid-template: repeat(5, auto) / 1fr;
 			&::before {
 				display: none;
 			}
-			:not(:last-child) {
-				&::after {
-					content: "";
-					position: absolute;
-					bottom: 0px;
-					right: 0;
-					width: 210%;
-					height: 2px;
-					background-color: #d0d0d0;
-				}
+			& > :not(:last-child)::after {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 2px;
+				background-color: #d0d0d0;
+				// margin: 0px 0px 15px 0px;
 			}
 		}
 	}
 
 	// .table-session__item
 	&__item {
-		padding: 15px 0px;
-
+		align-self: end;
+		@media (max-width: ($md3+px)) {
+			&:not(:first-child) {
+				padding: 15px 0px 0px 0px;
+			}
+		}
 		&_name,
 		&_option {
 			font-size: 20px;
@@ -497,30 +501,38 @@ body {
 			span {
 				text-decoration: $redColor line-through;
 			}
+			@media (min-width: ($md3+px)) {
+				padding: 15px 0px;
+				min-height: 100%;
+			}
 		}
 		&_name {
 			@media (max-width: ($md3+px)) {
 			}
 			font-weight: 400;
 		}
-		&_option:not(:last-child) {
-			// &::after {
-			// content: "";
-			// position: absolute;
-			// bottom: -17px;
-			// right: 0;
-			// width: 210%;
-			// height: 2px;
-			// background-color: #d0d0d0;
-			// }
+		&_option {
+			@media (max-width: ($md3+px)) {
+				padding: 0px 0px 15px 0px;
+			}
+			@media (min-width: ($md3+px)) {
+				@include adaptiv-value("padding-left", 15, 0, 1);
+			}
 		}
-		// @media (max-width: ($md3+px)) {
-
-		// }
 		@media (min-width: ($md3+px)) {
+			position: relative;
 			display: grid;
-			grid-template-columns: 1fr 1fr;
-			row-gap: 32px;
+			grid-template: auto / minmax(290px, 1fr) 1fr;
+			&:not(:last-child) ::after {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 2px;
+				background-color: #d0d0d0;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
 		}
 	}
 }
