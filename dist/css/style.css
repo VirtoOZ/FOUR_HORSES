@@ -1476,10 +1476,6 @@ ol.counter li::before {
 }
 .table-session__body {
   position: relative;
-  display: grid;
-  grid-template: repeat(5, 1fr)/1fr 1fr;
-  gap: 32px;
-  align-items: center;
 }
 .table-session__body::before {
   content: "";
@@ -1492,11 +1488,25 @@ ol.counter li::before {
 }
 @media (max-width: 767.98px) {
   .table-session__body {
+    display: grid;
+    align-items: center;
     grid-template: repeat(5, 1fr)/1fr;
   }
   .table-session__body::before {
     display: none;
   }
+  .table-session__body :not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    width: 210%;
+    height: 2px;
+    background-color: #d0d0d0;
+  }
+}
+.table-session__item {
+  padding: 15px 0px;
 }
 .table-session__item_name, .table-session__item_option {
   font-size: 20px;
@@ -1511,19 +1521,11 @@ ol.counter li::before {
 .table-session__item_name {
   font-weight: 400;
 }
-.table-session__item_option:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  bottom: -17px;
-  right: 0;
-  width: 210%;
-  height: 2px;
-  background-color: #d0d0d0;
-}
-@media (max-width: 767.98px) {
-  .table-session__item_option:not(:last-child)::after {
-    right: 0;
-    width: 100%;
+@media (min-width: 767.98px) {
+  .table-session__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
   }
 }
 
