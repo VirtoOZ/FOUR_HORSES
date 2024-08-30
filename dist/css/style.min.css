@@ -998,9 +998,8 @@ ol.counter li::before {
     margin-bottom: calc(120px + 80 * ((100vw - 375px) / 887));
   }
 }
-
 .title {
-  font-family: Merriweather;
+  font-family: "Merriweather";
   font-size: 36px;
   font-weight: 400;
   line-height: 135%;
@@ -1579,6 +1578,38 @@ ol.counter li::before {
   }
 }
 
+.stages__title {
+  max-width: 803px;
+  font-size: 54px;
+  line-height: 110%;
+}
+@media (max-width: 1262px) {
+  .stages__title {
+    font-size: calc(36px + 18 * ((100vw - 375px) / 887));
+  }
+}
+@media (min-width: 479.98px) {
+  .stages__title {
+    line-height: 120%;
+  }
+}
+.stages__subtitle {
+  display: inline-flex;
+  align-items: flex-start;
+}
+.stages__subtitle span {
+  text-transform: none;
+  font-size: 20px;
+  color: #3057a2;
+  line-height: 120%;
+  font-weight: 400;
+  font-family: "GolosText";
+}
+@media (max-width: 1262px) {
+  .stages__subtitle span {
+    font-size: calc(18px + 2 * ((100vw - 375px) / 887));
+  }
+}
 /* .breadcrumbs {
 	overflow: auto;
 	margin: 0px 0px 20px 0px;
