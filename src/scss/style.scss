@@ -585,6 +585,8 @@ body {
 	}
 	// .stages__items
 	&__items {
+		position: relative;
+
 		display: grid;
 		grid-template: repeat(3, 1fr) / repeat(3, minmax(300px, 394px));
 		gap: 20px;
@@ -609,6 +611,8 @@ body {
 .item-stages {
 	// .item-stages__number
 	&__number {
+		font-size: 20px;
+		font-weight: 600;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -631,6 +635,23 @@ body {
 	// .item-stages__text
 	&__text {
 		margin: 0px 0px 0px 16px;
+		flex: 0 1 446px;
+		@include adaptiv-value("font-size", 20, 18, 1);
+		font-weight: 500;
+	}
+	// .item-stages__image
+	&__image {
+		position: absolute;
+		width: calc(375 / 1222 * 100%);
+		padding: 0px 0px calc(146 / 1222 * 100%) 0px;
+		bottom: 45px;
+		right: -50px;
+
+		// position: absolut;
+		// padding: 0px 10% 0px 0px;
+		img {
+			transform: rotate(-15.3deg);
+		}
 	}
 }
 //</STAGES>=================================

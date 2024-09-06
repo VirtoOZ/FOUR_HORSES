@@ -1624,6 +1624,7 @@ ol.counter li::before {
   }
 }
 .stages__items {
+  position: relative;
   display: grid;
   grid-template: repeat(3, 1fr)/repeat(3, minmax(300px, 394px));
   gap: 20px;
@@ -1644,6 +1645,8 @@ ol.counter li::before {
 }
 
 .item-stages__number {
+  font-size: 20px;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1665,6 +1668,24 @@ ol.counter li::before {
 }
 .item-stages__text {
   margin: 0px 0px 0px 16px;
+  flex: 0 1 446px;
+  font-size: 20px;
+  font-weight: 500;
+}
+@media (max-width: 1262px) {
+  .item-stages__text {
+    font-size: calc(18px + 2 * ((100vw - 375px) / 887));
+  }
+}
+.item-stages__image {
+  position: absolute;
+  width: 30.6873977087%;
+  padding: 0px 0px 11.9476268412% 0px;
+  bottom: 45px;
+  right: -50px;
+}
+.item-stages__image img {
+  transform: rotate(-15.3deg);
 }
 
 /* .breadcrumbs {
