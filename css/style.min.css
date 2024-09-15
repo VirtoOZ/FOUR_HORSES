@@ -1623,12 +1623,31 @@ ol.counter li::before {
     margin: 1em 0px 0px 0px;
   }
 }
+@media (max-width: 1365.98px) {
+  .stages__body {
+    padding: 150px 0px 0px 0px;
+    position: relative;
+  }
+}
 .stages__items {
-  position: relative;
   display: grid;
-  grid-template: repeat(3, 1fr)/repeat(3, minmax(300px, 394px));
   gap: 20px;
-  align-items: stretch;
+}
+@media (min-width: 1365.98px) {
+  .stages__items {
+    position: relative;
+  }
+}
+@media (min-width: 991.98px) {
+  .stages__items {
+    grid-template-columns: repeat(3, minmax(300px, 394px));
+    align-items: stretch;
+  }
+}
+@media (max-width: 991.98px) {
+  .stages__items {
+    grid-template-columns: minmax(300px, 394px) minmax(300px, 394px);
+  }
 }
 .stages__item {
   display: flex;
@@ -1643,7 +1662,6 @@ ol.counter li::before {
   grid-column: 2/span 2;
   grid-row: 3/4;
 }
-
 .item-stages__number {
   font-size: 20px;
   font-weight: 600;
@@ -1668,24 +1686,83 @@ ol.counter li::before {
 }
 .item-stages__text {
   margin: 0px 0px 0px 16px;
-  flex: 0 1 446px;
+  padding-right: 50px;
   font-size: 20px;
   font-weight: 500;
+}
+@media (max-width: 1262px) {
+  .item-stages__text {
+    padding-right: calc(0px + 50 * ((100vw - 375px) / 887));
+  }
 }
 @media (max-width: 1262px) {
   .item-stages__text {
     font-size: calc(18px + 2 * ((100vw - 375px) / 887));
   }
 }
+@media (min-width: 1365.98px) {
+  .item-stages__text {
+    flex: 0 1 446px;
+  }
+}
 .item-stages__image {
   position: absolute;
-  width: 30.6873977087%;
-  padding: 0px 0px 11.9476268412% 0px;
-  bottom: 45px;
-  right: -50px;
+  z-index: 3;
+  width: 375px;
+  padding-bottom: 146px;
+  animation: air-plane-2 5s linear infinite;
+}
+@media (max-width: 1262px) {
+  .item-stages__image {
+    width: calc(318px + 57 * ((100vw - 375px) / 887));
+  }
+}
+@media (max-width: 1262px) {
+  .item-stages__image {
+    padding-bottom: calc(118px + 28 * ((100vw - 375px) / 887));
+  }
 }
 .item-stages__image img {
   transform: rotate(-15.3deg);
+}
+@media (min-width: 1365.98px) {
+  .item-stages__image {
+    bottom: 70px;
+    right: -50px;
+  }
+}
+@media (max-width: 1365.98px) {
+  .item-stages__image {
+    top: 0px;
+    left: 0px;
+  }
+}
+@keyframes air-plane-1 {
+  0% {
+    transform: rotate(-5deg) translate(100%, -20%);
+  }
+  100% {
+    transform: rotate(0deg) translate(0%, 0%);
+  }
+}
+@keyframes air-plane-2 {
+  0% {
+    transform: rotate(0deg) translate(0%, 0%);
+  }
+  50% {
+    transform: rotate(1deg) translate(0%, 7%);
+  }
+  100% {
+    transform: rotate(0deg) translate(0%, 0%);
+  }
+}
+@keyframes air-plane-3 {
+  0% {
+    transform: rotate(0deg) translate(0%, 0%);
+  }
+  100% {
+    transform: rotate(5deg) translate(-400%, -200%);
+  }
 }
 
 /* .breadcrumbs {
