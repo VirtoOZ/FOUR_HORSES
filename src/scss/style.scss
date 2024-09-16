@@ -109,6 +109,7 @@ body {
 	}
 	// .page__stages
 	&__stages {
+		@include adaptiv-value("margin-bottom", 200, 120, 1);
 	}
 }
 //<ОБЩИЕ СТИЛИ>=================================
@@ -595,12 +596,14 @@ body {
 			position: relative;
 		}
 		@media (min-width: ($md2+px)) {
-			grid-template-columns: repeat(3, minmax(300px, 394px));
-
+			grid-template-columns: repeat(auto-fit, minmax(300px, 394px));
 			align-items: stretch;
 		}
 		@media (max-width: ($md2+px)) {
-			grid-template-columns: minmax(300px, 394px) minmax(300px, 394px);
+			grid-template-columns: 1fr 1fr;
+		}
+		@media (max-width: ($md4+px)) {
+			grid-template-columns: 1fr;
 		}
 	}
 	// .stages__item
@@ -609,13 +612,23 @@ body {
 		background: url("../img/stages/bg.jpg") 0 0 repeat;
 		padding: 20px;
 		// background-color: transparent;
-		&_bigv {
-			grid-column: 3 / 4;
-			grid-row: 1 / span 2;
+		&_big {
+			@media (max-width: ($md4+px)) {
+				grid-column: 1 / 2;
+				grid-row: span 2;
+			}
 		}
 		&_bigh {
-			grid-column: 2 / span 2;
-			grid-row: 3 / 4;
+			@media (min-width: ($md2+px)) {
+				grid-column: 3 / 4;
+				grid-row: 1 / span 2;
+			}
+		}
+		&_bigv {
+			@media (min-width: ($md2+px)) {
+				grid-column: 2 / span 2;
+				grid-row: 3 / 4;
+			}
 		}
 		&_bigv .item-stages__text {
 			// flex: 0 1 calc(394 / 446 * 100%);
