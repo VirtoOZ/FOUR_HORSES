@@ -1640,6 +1640,7 @@ ol.counter li::before {
 }
 .stages__items {
   display: grid;
+  grid-auto-rows: 1fr;
   gap: 20px;
 }
 @media (min-width: 1365.98px) {
@@ -1667,12 +1668,6 @@ ol.counter li::before {
   display: flex;
   background: url("../img/stages/bg.jpg") 0 0 repeat;
   padding: 20px;
-}
-@media (max-width: 639.98px) {
-  .stages__item_big {
-    grid-column: 1/2;
-    grid-row: span 2;
-  }
 }
 @media (min-width: 991.98px) {
   .stages__item_bigh {
@@ -1710,14 +1705,8 @@ ol.counter li::before {
 }
 .item-stages__text {
   margin: 0px 0px 0px 16px;
-  padding-right: 50px;
   font-size: 20px;
   font-weight: 500;
-}
-@media (max-width: 1262px) {
-  .item-stages__text {
-    padding-right: calc(0px + 50 * ((100vw - 375px) / 887));
-  }
 }
 @media (max-width: 1262px) {
   .item-stages__text {
