@@ -111,6 +111,9 @@ body {
 	&__stages {
 		@include adaptiv-value("margin-bottom", 200, 120, 1);
 	}
+	// .page__participants
+	&__participants {
+	}
 }
 //<ОБЩИЕ СТИЛИ>=================================
 
@@ -725,6 +728,95 @@ body {
 	}
 }
 //</STAGES>=================================
+
+//<PARTICIPANTS>=================================
+.participants {
+	// .participants__container
+	&__container {
+	}
+	// .participants__header
+	&__header {
+		display: flex;
+	}
+	// .participants__title
+	&__title {
+		flex: 1 1 auto;
+	}
+	// .participants__controls
+	&__controls {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		column-gap: 14px;
+	}
+	// .participants__items
+	&__items {
+		display: flex;
+	}
+	// .participants__item
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: #dadada;
+		margin: 0px 20px 0px 0px;
+	}
+}
+.item-participants {
+	padding: 0px 37px;
+	// .item-participants__avatar
+	&__avatar {
+		img {
+			border-radius: 50%;
+		}
+		&:not(:last-child) {
+			margin: 0px 0px 28px 0px;
+		}
+	}
+	// .item-participants__about
+	&__about {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	// .item-participants__name
+	&__name {
+		font-size: 24px;
+		font-weight: 600;
+		&:not(:last-child) {
+			@include adaptiv-value("margin-bottom", 6, 8, 1);
+		}
+	}
+	// .item-participants__info
+	&__info {
+		font-size: 20px;
+		opacity: 0.6;
+		&:not(:last-child) {
+			margin: 0px 0px 20px 0px;
+		}
+	}
+	// .item-participants__button
+	&__button {
+	}
+}
+.controls {
+	// .controls__arrow
+	&__arrow {
+	}
+	// .controls__pagination
+	&__pagination {
+		font-size: 16px;
+	}
+	// .controls__pagination-current
+	&__pagination-current {
+	}
+	// .controls__pagination-total
+	&__pagination-total {
+		display: inline-block;
+		opacity: 0.6;
+	}
+}
+//</PARTICIPANTS>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
 /* .breadcrumbs {
