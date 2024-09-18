@@ -971,6 +971,29 @@ ol.counter li::before {
   text-transform: uppercase;
 }
 
+.footer {
+  background-color: #e9ded4;
+}
+.footer__body {
+  padding-top: 40px;
+  padding-bottom: 72px;
+}
+@media (max-width: 1262px) {
+  .footer__body {
+    padding-top: calc(78px + -38 * ((100vw - 375px) / 887));
+  }
+}
+@media (max-width: 1262px) {
+  .footer__body {
+    padding-bottom: calc(60px + 12 * ((100vw - 375px) / 887));
+  }
+}
+.footer__text {
+  opacity: 0.6;
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .page {
   flex: 1 1 auto;
 }
@@ -1006,6 +1029,15 @@ ol.counter li::before {
     margin-bottom: calc(120px + 80 * ((100vw - 375px) / 887));
   }
 }
+.page__participants {
+  margin-bottom: 140px;
+}
+@media (max-width: 1262px) {
+  .page__participants {
+    margin-bottom: calc(100px + 40 * ((100vw - 375px) / 887));
+  }
+}
+
 .title {
   font-family: "Merriweather";
   font-size: 36px;
@@ -1779,13 +1811,22 @@ ol.counter li::before {
 
 .participants__header {
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+@media (max-width: 1262px) {
+  .participants__header {
+    margin-bottom: calc(40px + 20 * ((100vw - 375px) / 887));
+  }
 }
 .participants__title {
-  flex: 1 1 auto;
+  font-family: Merriweather;
+  font-size: 54px;
+  line-height: 120%;
+  /* 64.8px */
 }
 .participants__controls {
   display: flex;
-  justify-content: center;
   align-items: center;
   column-gap: 14px;
 }
@@ -1802,6 +1843,10 @@ ol.counter li::before {
 
 .item-participants {
   padding: 0px 37px;
+}
+.item-participants__avatar {
+  flex: 0 0 320px;
+  width: 320px;
 }
 .item-participants__avatar img {
   border-radius: 50%;
