@@ -113,6 +113,7 @@ body {
 	}
 	// .page__participants
 	&__participants {
+		@include adaptiv-value("margin-bottom", 140, 100, 1);
 	}
 }
 //<ОБЩИЕ СТИЛИ>=================================
@@ -734,18 +735,27 @@ body {
 	// .participants__container
 	&__container {
 	}
+	// .participants__body
+	&__body {
+	}
 	// .participants__header
 	&__header {
 		display: flex;
+		justify-content: space-between;
+		// flex-direction: column;
+		@include adaptiv-value("margin-bottom", 60, 40, 1);
 	}
+
 	// .participants__title
 	&__title {
-		flex: 1 1 auto;
+		// display: inline-flex;
+		font-family: Merriweather;
+		font-size: 54px;
+		line-height: 120%; /* 64.8px */
 	}
 	// .participants__controls
 	&__controls {
 		display: flex;
-		justify-content: center;
 		align-items: center;
 		column-gap: 14px;
 	}
@@ -766,6 +776,8 @@ body {
 	padding: 0px 37px;
 	// .item-participants__avatar
 	&__avatar {
+		flex: 0 0 320px;
+		width: 320px;
 		img {
 			border-radius: 50%;
 		}
