@@ -274,9 +274,9 @@ body {
 	}
 }
 .main-wrapper {
-	// mix-blend-mode: color-burn;
 	// .main-wrapper__sun
 	&__sun {
+		// mix-blend-mode: overlay;
 		position: absolute;
 		z-index: 1;
 		@include adaptiv-value("padding-bottom", 660, 297.47, 1);
@@ -287,18 +287,20 @@ body {
 		background-color: #fbce51;
 		border-radius: 50%;
 		transition: transform 0.3s ease 0s;
-		// mix-blend-mode: color-burn;
+		// opacity: 0.6;
 
-		// mix-blend-mode: overlay;
+		// mix-blend-mode: darken;
+		mix-blend-mode: color-burn;
 		img {
+			// mix-blend-mode: darken;
 			// mix-blend-mode: color-burn;
 		}
 		&_text {
 			position: static;
 			img {
-				// mix-blend-mode: color-burn;
-				mix-blend-mode: overlay;
-				// opacity: 0.6;
+				mix-blend-mode: color-burn;
+				// mix-blend-mode: overlay;
+				opacity: 0.6;
 				@include adaptiv-value("padding", 13, 6, 1);
 				animation: oreol-text 20s infinite linear;
 			}
