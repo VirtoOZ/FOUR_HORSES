@@ -1233,6 +1233,7 @@ ol.counter li::before {
   background-color: #fbce51;
   border-radius: 50%;
   transition: transform 0.3s ease 0s;
+  mix-blend-mode: color-burn;
 }
 @media (max-width: 1262px) {
   .main-wrapper__sun {
@@ -1258,7 +1259,8 @@ ol.counter li::before {
   position: static;
 }
 .main-wrapper__sun_text img {
-  mix-blend-mode: overlay;
+  mix-blend-mode: color-burn;
+  opacity: 0.6;
   padding: 13px;
   animation: oreol-text 20s infinite linear;
 }
