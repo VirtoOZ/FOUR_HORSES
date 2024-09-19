@@ -1062,7 +1062,7 @@ ol.counter li::before {
 
 .main {
   padding: 87px 0px 0px 0px;
-  margin: -87px 0px 0px 0px;
+  margin-top: -87px;
   position: relative;
   z-index: 1;
 }
@@ -1073,6 +1073,8 @@ ol.counter li::before {
   height: 576px;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 3;
 }
 @media (max-width: 1262px) {
   .main__body {
@@ -1088,8 +1090,10 @@ ol.counter li::before {
   height: 100%;
   top: 0;
   left: 0;
+  background-color: #e9ded4;
 }
 .main__bg-image img {
+  mix-blend-mode: color-burn;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1220,7 +1224,7 @@ ol.counter li::before {
 
 .main-wrapper__sun {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   padding-bottom: 660px;
   width: 660px;
   margin-right: -41px;
@@ -1254,7 +1258,7 @@ ol.counter li::before {
   position: static;
 }
 .main-wrapper__sun_text img {
-  opacity: 0.6;
+  mix-blend-mode: overlay;
   padding: 13px;
   animation: oreol-text 20s infinite linear;
 }
@@ -1320,6 +1324,7 @@ ol.counter li::before {
 }
 .main-wrapper__chess_king {
   position: absolute;
+  z-index: 1;
   width: 103.78px;
   padding-bottom: 255.89px;
   right: 445.98px;
@@ -1348,6 +1353,7 @@ ol.counter li::before {
 }
 .main-wrapper__chess_queen {
   position: absolute;
+  z-index: 1;
   width: 113.16px;
   padding-bottom: 252.44px;
   right: 101.21px;
@@ -1449,7 +1455,6 @@ ol.counter li::before {
 .main-wrapper__city {
   padding: 0px 0px 26% 0px;
 }
-
 .visit__body {
   justify-content: center;
   display: flex;
@@ -1486,6 +1491,9 @@ ol.counter li::before {
     width: 335px;
     margin: 0px auto 24px auto;
   }
+}
+.visit__image img {
+  border-radius: 50%;
 }
 
 @media (min-width: 991.98px) {
