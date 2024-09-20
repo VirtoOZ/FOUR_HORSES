@@ -132,11 +132,11 @@ body {
 }
 //<MAIN>=================================
 .main {
-	padding: 87px 0px 0px 0px;
-	margin-top: -87px;
+	padding: 88px 0px 0px 0px;
+	margin-top: -88px;
 	position: relative;
 	z-index: 1;
-	// background: #e9ded4;
+	background: #e9ded4;
 	// .main__wrapper
 	&__wrapper {
 		position: relative;
@@ -146,7 +146,8 @@ body {
 	}
 	// .main__body
 	&__body {
-		@include adaptiv-value("height", 576, 684, 1);
+		@include adaptiv-value("margin-top", 36, 23, 1);
+		@include adaptiv-value("height", 576, 707, 1);
 		display: flex;
 		justify-content: space-between;
 		position: relative;
@@ -167,14 +168,15 @@ body {
 	// .main__bg-image
 	&__bg-image {
 		position: absolute;
+		z-index: 2;
 		width: 100%;
 		height: 100%;
 		top: 0;
 		left: 0;
-		background-color: #e9ded4;
+		mix-blend-mode: color-burn;
 		img {
-			mix-blend-mode: color-burn;
 			position: absolute;
+			z-index: 1;
 			width: 100%;
 			height: 100%;
 			top: 0;
@@ -185,7 +187,7 @@ body {
 }
 .running-line {
 	position: relative;
-	z-index: 1;
+	z-index: 3;
 	margin: 0px auto;
 	overflow: hidden;
 	@include adaptiv-value("width", 2223, 1640, 1);
@@ -290,7 +292,7 @@ body {
 		// opacity: 0.6;
 
 		// mix-blend-mode: darken;
-		mix-blend-mode: color-burn;
+		// mix-blend-mode: color-burn;
 		img {
 			// mix-blend-mode: darken;
 			// mix-blend-mode: color-burn;
@@ -298,10 +300,10 @@ body {
 		&_text {
 			position: static;
 			img {
-				mix-blend-mode: color-burn;
-				// mix-blend-mode: overlay;
-				opacity: 0.6;
-				@include adaptiv-value("padding", 13, 6, 1);
+				// mix-blend-mode: color-burn;
+				mix-blend-mode: overlay;
+				// opacity: 0.6;
+				@include adaptiv-value("padding", 10, 6, 1);
 				animation: oreol-text 20s infinite linear;
 			}
 			@keyframes oreol-text {
@@ -356,7 +358,7 @@ body {
 			@include adaptiv-value("padding-bottom", 243.99, 121.63, 1);
 			@include adaptiv-value("right", 281.38, 121.73, 1);
 			@include adaptiv-value("bottom", -38, -16, 1);
-			z-index: 1;
+			z-index: 3;
 			transform: rotate(-10.6deg);
 		}
 		// .main-wrapper__chess_pawn
@@ -366,7 +368,7 @@ body {
 			@include adaptiv-value("padding-bottom", 122.22, 61, 1);
 			right: -29.45px;
 			bottom: 19.58px;
-			z-index: 1;
+			z-index: 3;
 			transition:
 				// visibility 0.3s ease 0s,
 				opacity 0.3s ease 0s;
@@ -381,15 +383,16 @@ body {
 	// .main-wrapper__out
 	&__out {
 		position: absolute;
-		z-index: 2;
 		@include adaptiv-value("margin-right", -214.5, -129.43, 1);
 		@include adaptiv-value("width", 1623.5, 885.53, 1);
 		right: 0;
 		bottom: 0;
+		// mix-blend-mode: color-burn;
 	}
 	// .main-wrapper__city
 	&__city {
-		padding: 0px 0px 26% 0px;
+		z-index: 2;
+		padding: 0px 0px 27% 0px;
 
 		img {
 		}

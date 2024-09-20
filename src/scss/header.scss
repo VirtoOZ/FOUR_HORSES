@@ -11,9 +11,9 @@
 	// .header__body
 	&__body {
 		display: flex;
-		min-height: 87px;
+		min-height: 88px;
 		@media (max-width: ($md1+px)) {
-			@include adaptiv-value("min-height", 87, 67, 1);
+			@include adaptiv-value("min-height", 88, 67, 1);
 		}
 		> *:not(:last-child) {
 			margin: 0px 10px 0px 0px;
