@@ -697,7 +697,7 @@ textarea.input {
   height: 44px;
   border-radius: 50%;
   position: relative;
-  background-color: #000;
+  background-color: #313131;
   transition: background-color 0.3s ease 0s;
 }
 .arrow-left_black::before, .arrow-left_disabled::before,
@@ -722,6 +722,30 @@ textarea.input {
 
 .arrow-left_black, .arrow-left_disabled {
   transform: rotate(-180deg);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+.controls__pagination {
+  display: flex;
+  column-gap: 6px;
+  font-size: 16px;
+}
+.controls__pagination-total {
+  display: inline-block;
+  opacity: 0.6;
+}
+.controls__dott {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+}
+.controls__dott._active {
+  background-color: #313131;
 }
 
 .row::after {
@@ -1722,7 +1746,7 @@ ol.counter li::before {
 }
 @media (max-width: 1365.98px) {
   .stages__body {
-    padding: 150px 0px 0px 0px;
+    padding: 94px 0px 0px 0px;
     position: relative;
   }
 }
@@ -1749,13 +1773,21 @@ ol.counter li::before {
 }
 @media (max-width: 639.98px) {
   .stages__items {
-    grid-template-columns: 1fr;
+    display: flex;
+    margin: 0px 0px 28px 0px;
   }
 }
 .stages__item {
   display: flex;
-  background: url("../img/stages/bg.jpg") 0 0 repeat;
+  flex-wrap: wrap;
+  background: url("../img/stages/bg.jpg") 0 0/cover no-repeat;
   padding: 20px;
+}
+@media (max-width: 639.98px) {
+  .stages__item {
+    flex: 0 0 100%;
+    padding: 62px 20px 34px 20px;
+  }
 }
 @media (min-width: 991.98px) {
   .stages__item_bigh {
@@ -1768,6 +1800,22 @@ ol.counter li::before {
     grid-column: 2/span 2;
     grid-row: 3/4;
   }
+}
+.stages__controls {
+  justify-content: center;
+}
+
+@media (max-width: 639.98px) {
+  .item-stages_big {
+    background: url("../img/stages/bg.jpg") 0 0/cover no-repeat;
+  }
+}
+.item-stages__body {
+  display: flex;
+  flex: 0 0 100%;
+}
+.item-stages__body:not(:last-child) {
+  margin: 0px 0px 28px 0px;
 }
 .item-stages__number {
   font-size: 20px;
@@ -1897,11 +1945,6 @@ ol.counter li::before {
     /* 64.8px */
   }
 }
-.participants__controls {
-  display: flex;
-  align-items: center;
-  column-gap: 14px;
-}
 @media (max-width: 991.98px) {
   .participants__controls {
     margin: 40px 0px 0px 0px;
@@ -1985,14 +2028,6 @@ ol.counter li::before {
 .item-participants__info:not(:last-child) {
   margin: 0px 0px 20px 0px;
 }
-.controls__pagination {
-  font-size: 16px;
-}
-.controls__pagination-total {
-  display: inline-block;
-  opacity: 0.6;
-}
-
 /* .breadcrumbs {
 	overflow: auto;
 	margin: 0px 0px 20px 0px;

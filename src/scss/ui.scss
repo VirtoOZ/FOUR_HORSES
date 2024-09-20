@@ -76,7 +76,7 @@
 		height: 44px;
 		border-radius: 50%;
 		position: relative;
-		background-color: #000;
+		background-color: $mainColor;
 		transition: background-color 0.3s ease 0s;
 		&::before {
 			content: "";
@@ -106,6 +106,39 @@
 	}
 }
 
+.controls {
+	display: flex;
+	align-items: center;
+	column-gap: 14px;
+	// .controls__arrow
+	&__arrow {
+	}
+	// .controls__pagination
+	&__pagination {
+		display: flex;
+		column-gap: 6px;
+		font-size: 16px;
+	}
+	// .controls__pagination-current
+	&__pagination-current {
+	}
+	// .controls__pagination-total
+	&__pagination-total {
+		display: inline-block;
+		opacity: 0.6;
+	}
+	// .controls__dott
+	&__dott {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background-color: $grayColor;
+
+		&._active {
+			background-color: $mainColor;
+		}
+	}
+}
 //<?ОСНОВНОЙ БЛОК>=================================
 
 //<ГОТОВЫЕ КЛАССЫ>=================================

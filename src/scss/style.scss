@@ -37,6 +37,7 @@ $md5: 479.98;
 $mainColor: #313131;
 $yellowColor: #fbce51;
 $darkGrayColor: #010000;
+$grayColor: #d9d9d9;
 $redColor: #f54932;
 $blueColor: #3057a2;
 //</ПЕРЕМЕННЫЕ>=================================
@@ -647,7 +648,7 @@ body {
 	// .stages__body
 	&__body {
 		@media (max-width: ($md1+px)) {
-			padding: 150px 0px 0px 0px;
+			padding: 94px 0px 0px 0px;
 			position: relative;
 		}
 	}
@@ -669,14 +670,21 @@ body {
 			grid-template-columns: 1fr 1fr;
 		}
 		@media (max-width: ($md4+px)) {
-			grid-template-columns: 1fr;
+			display: flex;
+			margin: 0px 0px 28px 0px;
 		}
 	}
 	// .stages__item
 	&__item {
 		display: flex;
-		background: url("../img/stages/bg.jpg") 0 0 repeat;
+		flex-wrap: wrap;
+		background: url("../img/stages/bg.jpg") 0 0 / cover no-repeat;
 		padding: 20px;
+		@media (max-width: ($md4+px)) {
+			flex: 0 0 100%;
+			padding: 62px 20px 34px 20px;
+		}
+
 		// background-color: transparent;
 		&_big {
 			@media (max-width: ($md4+px)) {
@@ -701,8 +709,26 @@ body {
 			// flex: 0 1 calc(394 / 446 * 100%);
 		}
 	}
+	// .stages__controls
+	&__controls {
+		justify-content: center;
+	}
 }
 .item-stages {
+	// .item-stages__body_big
+	&_big {
+		@media (max-width: ($md4+px)) {
+			background: url("../img/stages/bg.jpg") 0 0 / cover no-repeat;
+		}
+	}
+	// .item-stages__body
+	&__body {
+		display: flex;
+		flex: 0 0 100%;
+		&:not(:last-child) {
+			margin: 0px 0px 28px 0px;
+		}
+	}
 	// .item-stages__number
 	&__number {
 		font-size: 20px;
@@ -787,6 +813,7 @@ body {
 		}
 	}
 }
+
 //</STAGES>=================================
 
 //<PARTICIPANTS>=================================
@@ -818,9 +845,6 @@ body {
 	}
 	// .participants__controls
 	&__controls {
-		display: flex;
-		align-items: center;
-		column-gap: 14px;
 		@media (max-width: ($md2+px)) {
 			margin: 40px 0px 0px 0px;
 			align-self: center;
@@ -898,23 +922,6 @@ body {
 	}
 	// .item-participants__button
 	&__button {
-	}
-}
-.controls {
-	// .controls__arrow
-	&__arrow {
-	}
-	// .controls__pagination
-	&__pagination {
-		font-size: 16px;
-	}
-	// .controls__pagination-current
-	&__pagination-current {
-	}
-	// .controls__pagination-total
-	&__pagination-total {
-		display: inline-block;
-		opacity: 0.6;
 	}
 }
 //</PARTICIPANTS>=================================
