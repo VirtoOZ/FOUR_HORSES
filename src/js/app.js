@@ -6,7 +6,7 @@ import * as flsFunctions from './modules/functions.js'
 'use strict'
 // В script.js подключаются дополнительные функции slide, webp, ibg...
 import './files/dynamic_adapt.js';
-// import './files/script.js';
+import './files/script.js';
 // import './files/functions.js';
 // import './files/sliders.js';
 // import './files/forms.js';
