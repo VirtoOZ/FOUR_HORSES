@@ -84,27 +84,25 @@ window.onload = function () { //когда весь контент загруз�
 	// headerObserver.observe(headerElement);
 	//<SLIDER></SLIDER>=================================
 	let slider = document.querySelector('.stages__slider');
-	let sliderLine = document.querySelector('.stages__items');
 	let sliderItem = document.querySelectorAll('.stages__item');
-
-	let buttonNext = document.querySelector('.arrow-right');
-	let buttonPrev = document.querySelector('.arrow-left');
-	let sliderWidth = slider.offsetWidth;
-	console.log(sliderWidth);
-
 	let sliderCount = 0;
+	let sliderLength = sliderItem.length;
 
+
+	if (slider) {
+		arrowStatus();
+	}
 	// Функция Слайдер вперед
 	function nextSlide() {
+		// arrowStatus();
 		if (sliderCount >= 0 && sliderCount < [sliderItem.length] - 1) {
 			sliderCount++;
-			console.log(sliderCount);
+			// console.log(sliderCount);
 		} else {
-			buttonNext.classList.remove('arrow-right_black');
-			buttonNext.classList.add('arrow-right_disabled');
 			return;
 		}
 		moveSlider();
+		arrowStatus();
 	}
 	// Функция Слайдер назад
 	function prevSlide() {
@@ -113,9 +111,34 @@ window.onload = function () { //когда весь контент загруз�
 			sliderCount = 0;
 		}
 		moveSlider();
+		arrowStatus();
+	}
+	// Функция состояния стрелок
+	function arrowStatus() {
+		let buttonNext = document.querySelector('.arrow-right');
+		let buttonPrev = document.querySelector('.arrow-left');
+		if (sliderCount == 0) {
+			// console.log('Yes');
+			buttonNext.classList.add('arrow-right_black');
+			buttonNext.classList.remove('arrow-right_disabled');
+			buttonPrev.classList.remove('arrow-left_black');
+			buttonPrev.classList.add('arrow-left_disabled');
+		}
+		if (sliderCount > 0 && sliderCount <= sliderItem.length) {
+			buttonPrev.classList.remove('arrow-left_disabled');
+			buttonPrev.classList.add('arrow-left_black');
+			buttonNext.classList.remove('arrow-right_disabled');
+			buttonNext.classList.add('arrow-right_black');
+		}
+		if (sliderCount == [sliderItem.length] - 1) {
+			buttonNext.classList.remove('arrow-right_black');
+			buttonNext.classList.add('arrow-right_disabled');
+		}
 	}
 	// Функция движение слайда
 	function moveSlider() {
+		let sliderLine = document.querySelector('.stages__items');
+		let sliderWidth = slider.offsetWidth;
 		sliderLine.style.transform = `translateX(${-sliderCount * sliderWidth}px)`;
 	}
 	// Автопрокрутка слайдов
