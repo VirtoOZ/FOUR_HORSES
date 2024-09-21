@@ -22,15 +22,15 @@ window.onload = function () { //когда весь контент загруз�
 	// Actions (делигирование события click)
 	function documentActions(e) {
 		const targetElement = e.target; // кладем в переменную нажатый объект
-		if (window.innerWidth > 768 && isMobile.any()) { // если ширина окна меньше 768 и это мобилка
-			// hover для мобилки
-			// if (targetElement.classList.contains('menu__arrow')) {
-			// 	targetElement.closest('.menu__item').classList.toggle('_hover');
-			// }
-			// if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
-			// 	_removeClasses(document.querySelectorAll('.menu__item._hover'), '_hover');
-			// }
-		}
+		// if (window.innerWidth > 768 && isMobile.any()) { // если ширина окна меньше 768 и это мобилка
+		// hover для мобилки
+		// if (targetElement.classList.contains('menu__arrow')) {
+		// 	targetElement.closest('.menu__item').classList.toggle('_hover');
+		// }
+		// if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
+		// 	_removeClasses(document.querySelectorAll('.menu__item._hover'), '_hover');
+		// }
+		// }
 		if (targetElement.classList.contains('arrow-right')) {
 			nextSlide();
 		}
@@ -87,8 +87,30 @@ window.onload = function () { //когда весь контент загруз�
 	let sliderItem = document.querySelectorAll('.stages__item');
 	let sliderCount = 0;
 	let sliderLength = sliderItem.length;
+	let paginationWrapper = document.querySelector('.controls__pagination');
 
 
+	function buildBullets() {
+		if (sliderLength) {
+			for (let index = 0; index < sliderLength; index++) {
+				paginationWrapper[index] = paginationWrapper.insertAdjacentHTML('beforeend', '<div class="controls__dott"></div>');
+			}
+		}
+		return;
+	}
+	buildBullets();
+	function activeBullet() {
+		let paginationDotts = document.querySelectorAll('.controls__dott');
+		for (let index = 0; index < paginationDotts.length; index++) {
+			const paginationDott = paginationDotts[index];
+			paginationDott.classList.remove('_active');
+			if (index == sliderCount) {
+				console.log('yes');
+				paginationDott.classList.add('_active');
+			}
+		}
+	}
+	activeBullet();
 	if (slider) {
 		arrowStatus();
 	}
@@ -103,6 +125,7 @@ window.onload = function () { //когда весь контент загруз�
 		}
 		moveSlider();
 		arrowStatus();
+		activeBullet();
 	}
 	// Функция Слайдер назад
 	function prevSlide() {
@@ -112,6 +135,7 @@ window.onload = function () { //когда весь контент загруз�
 		}
 		moveSlider();
 		arrowStatus();
+		activeBullet();
 	}
 	// Функция состояния стрелок
 	function arrowStatus() {
