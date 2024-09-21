@@ -679,6 +679,7 @@ textarea.input {
   border: 1px solid #3057a2;
   padding: 11px;
   font-size: 16px;
+  font-weight: 500;
 }
 @media (any-hover: hover) {
   .button_blue:hover {
@@ -743,6 +744,7 @@ textarea.input {
   height: 10px;
   border-radius: 50%;
   background-color: #d9d9d9;
+  transition: all 0.3s ease 0s;
 }
 .controls__dott._active {
   background-color: #313131;
@@ -1703,8 +1705,8 @@ ol.counter li::before {
   max-width: 806px;
   display: inline-block;
   font-size: 54px;
-  line-height: 110%;
   margin: 0px 0px 54px 0px;
+  line-height: 110%;
 }
 @media (max-width: 1262px) {
   .stages__title {
@@ -1744,10 +1746,12 @@ ol.counter li::before {
     margin: 1em 0px 0px 0px;
   }
 }
-@media (max-width: 1365.98px) {
+.stages__body {
+  position: relative;
+}
+@media (max-width: 991.98px) {
   .stages__body {
     padding: 94px 0px 0px 0px;
-    position: relative;
   }
 }
 @media (max-width: 639.98px) {
@@ -1780,10 +1784,12 @@ ol.counter li::before {
     display: flex;
     margin: 0px 0px 28px 0px;
     transition: transform 0.5s ease 0s;
+    line-height: 110%;
   }
 }
 .stages__item {
   display: flex;
+  align-content: flex-start;
   flex-wrap: wrap;
   background: url("../img/stages/bg.jpg") 0 0/cover no-repeat;
   padding: 20px;
@@ -1791,8 +1797,15 @@ ol.counter li::before {
 @media (max-width: 639.98px) {
   .stages__item {
     flex: 0 0 100%;
+  }
+}
+@media (max-width: 991.98px) {
+  .stages__item {
     padding: 62px 20px 34px 20px;
   }
+}
+.stages__item > .stages__item {
+  padding: 0;
 }
 @media (min-width: 991.98px) {
   .stages__item_bigh {
@@ -1801,7 +1814,7 @@ ol.counter li::before {
   }
 }
 @media (min-width: 991.98px) {
-  .stages__item_bigv {
+  .stages__item_bigw {
     grid-column: 2/span 2;
     grid-row: 3/4;
   }
@@ -1821,6 +1834,7 @@ ol.counter li::before {
   }
 }
 .item-stages__body {
+  font-size: 18px;
   display: flex;
   flex: 0 0 100%;
 }
@@ -1866,7 +1880,7 @@ ol.counter li::before {
 }
 .item-stages__image {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   width: 375px;
   padding-bottom: 146px;
   animation: air-plane-2 5s linear infinite;
@@ -1892,8 +1906,19 @@ ol.counter li::before {
 }
 @media (max-width: 1365.98px) {
   .item-stages__image {
-    top: 0px;
-    left: 0px;
+    top: -175px;
+    right: 0px;
+  }
+}
+@media (max-width: 1365.98px) and (max-width: 1262px) {
+  .item-stages__image {
+    right: calc(-300px + 300 * ((100vw - 375px) / 887));
+  }
+}
+@media (max-width: 991.98px) {
+  .item-stages__image {
+    top: -10px;
+    left: 18px;
   }
 }
 @keyframes air-plane-1 {
@@ -1924,6 +1949,9 @@ ol.counter li::before {
   }
 }
 
+.participants__body {
+  overflow: hidden;
+}
 @media (max-width: 991.98px) {
   .participants__body {
     display: flex;
@@ -1964,11 +1992,11 @@ ol.counter li::before {
 .participants__row {
   display: flex;
   margin: 0px -10px;
-  flex-wrap: wrap;
+  transition: all 0.3s ease 0s;
 }
 .participants__column {
   padding: 0px 10px;
-  flex: 0 1 33.333%;
+  flex: 0 0 33.333%;
   display: flex;
 }
 .participants__column:not(:last-child) {
@@ -1979,30 +2007,28 @@ ol.counter li::before {
 }
 @media (max-width: 991.98px) {
   .participants__column {
-    flex: 0 1 50%;
+    flex: 0 0 50%;
   }
 }
 @media (max-width: 639.98px) {
   .participants__column {
-    flex: 0 1 100%;
+    flex: 0 0 100%;
   }
 }
 .participants__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 1 1 100%;
 }
 
 .item-participants__avatar {
-  padding-left: 34px;
-  padding-right: 34px;
+  width: 320px;
+  margin: 0px auto;
 }
 @media (max-width: 1262px) {
   .item-participants__avatar {
-    padding-left: calc(45px + -11 * ((100vw - 375px) / 887));
-  }
-}
-@media (max-width: 1262px) {
-  .item-participants__avatar {
-    padding-right: calc(45px + -11 * ((100vw - 375px) / 887));
+    width: calc(244px + 76 * ((100vw - 375px) / 887));
   }
 }
 .item-participants__avatar:not(:last-child) {
@@ -2015,9 +2041,7 @@ ol.counter li::before {
   border-radius: 50%;
 }
 .item-participants__about {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 .item-participants__name {
   font-size: 24px;

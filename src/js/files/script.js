@@ -37,6 +37,12 @@ window.onload = function () { //когда весь контент загруз�
 		if (targetElement.classList.contains('arrow-left')) {
 			prevSlide();
 		}
+		if (targetElement.classList.contains('controls__arrow_right')) {
+			nextPartSlide();
+		}
+		if (targetElement.classList.contains('controls__arrow_left')) {
+			prevPartSlide();
+		}
 		// поиск в шапке, добавляем класс _active для кнопки поиска
 		// if (targetElement.classList.contains('search-form__icon')) {
 		// 	document.querySelector('.search-form').classList.toggle('_active');
@@ -82,16 +88,16 @@ window.onload = function () { //когда весь контент загруз�
 	// };
 	// const headerObserver = new IntersectionObserver(callback);
 	// headerObserver.observe(headerElement);
-	//<SLIDER></SLIDER>=================================
+	//<SLIDER-STAGE>=================================
 	let slider = document.querySelector('.stages__slider');
-	let sliderItem = document.querySelectorAll('.stages__item');
+	let sliderLine = document.querySelector('.stages__items');
+	let sliderItem = sliderLine.children;
 	let sliderCount = 0;
 	let sliderLength = sliderItem.length;
 	let paginationWrapper = document.querySelector('.controls__pagination');
 
-
 	function buildBullets() {
-		if (sliderLength) {
+		if (sliderLength > 0) {
 			for (let index = 0; index < sliderLength; index++) {
 				paginationWrapper[index] = paginationWrapper.insertAdjacentHTML('beforeend', '<div class="controls__dott"></div>');
 			}
@@ -105,7 +111,6 @@ window.onload = function () { //когда весь контент загруз�
 			const paginationDott = paginationDotts[index];
 			paginationDott.classList.remove('_active');
 			if (index == sliderCount) {
-				console.log('yes');
 				paginationDott.classList.add('_active');
 			}
 		}
@@ -116,10 +121,8 @@ window.onload = function () { //когда весь контент загруз�
 	}
 	// Функция Слайдер вперед
 	function nextSlide() {
-		// arrowStatus();
 		if (sliderCount >= 0 && sliderCount < [sliderItem.length] - 1) {
 			sliderCount++;
-			// console.log(sliderCount);
 		} else {
 			return;
 		}
@@ -129,20 +132,21 @@ window.onload = function () { //когда весь контент загруз�
 	}
 	// Функция Слайдер назад
 	function prevSlide() {
-		sliderCount--;
-		if (sliderCount < 0) {
-			sliderCount = 0;
+		if (sliderCount >= 1 && sliderCount < sliderItem.length) {
+			sliderCount--;
+			if (sliderCount < 0) {
+				sliderCount = 0;
+			}
+			moveSlider();
+			arrowStatus();
+			activeBullet();
 		}
-		moveSlider();
-		arrowStatus();
-		activeBullet();
 	}
 	// Функция состояния стрелок
 	function arrowStatus() {
 		let buttonNext = document.querySelector('.arrow-right');
 		let buttonPrev = document.querySelector('.arrow-left');
 		if (sliderCount == 0) {
-			// console.log('Yes');
 			buttonNext.classList.add('arrow-right_black');
 			buttonNext.classList.remove('arrow-right_disabled');
 			buttonPrev.classList.remove('arrow-left_black');
@@ -161,15 +165,94 @@ window.onload = function () { //когда весь контент загруз�
 	}
 	// Функция движение слайда
 	function moveSlider() {
-		let sliderLine = document.querySelector('.stages__items');
 		let sliderWidth = slider.offsetWidth;
 		sliderLine.style.transform = `translateX(${-sliderCount * sliderWidth}px)`;
 	}
+
+	//</SLIDER-STAGE>=================================
+
+	//<SLIDER-PARTICIPANTS>=================================
+	let sliderPart = document.querySelector('.participants__body');
+	let sliderPartLine = document.querySelector('.participants__row');
+	let sliderPartItem = document.querySelectorAll('.participants__column');
+	let sliderPartCount = 1;
+	let sliderPartLength = sliderPartItem.length;
+	let paginationCurrent = document.querySelector('.controls__pagination-current');
+	let paginationTotal = document.querySelector('.controls__pagination-total>span');
+	let addCoef = 0;
+
+
+
+	function buildPartPagination() {
+		if (sliderPartLength > 1) {
+			paginationTotal.innerHTML = sliderPartLength;
+			paginationCurrent.innerHTML = sliderPartCount;
+		}
+		return;
+	}
+	buildPartPagination();
+	// Функция Слайдер вперед
+	function nextPartSlide() {
+		sliderPartCount++;
+		if (sliderPartCount <= sliderPartLength && sliderPartCount >= 1) {
+			paginationCurrent.innerHTML = sliderPartCount;
+		} else
+			if (sliderPartCount > sliderPartLength) {
+				sliderPartCount = 1;
+				paginationCurrent.innerHTML = sliderPartCount;
+			}
+		moveSliderPart();
+	}
+	// Функция Слайдер назад
+	function prevPartSlide() {
+		sliderPartCount--;
+		if (sliderPartCount <= sliderPartLength) {
+			paginationCurrent.innerHTML = sliderPartCount;
+		}
+		if (sliderPartCount < 1) {
+			sliderPartCount = sliderPartLength;
+			paginationCurrent.innerHTML = sliderPartCount;
+		}
+		moveSliderPart();
+	}
+	// Функция состояния кнопок
+	function btnPartStatus() {
+		// 	let buttonNext = document.querySelector('.arrow-right');
+		// 	let buttonPrev = document.querySelector('.arrow-left');
+		// 	if (sliderCount == 0) {
+		// 		buttonNext.classList.add('arrow-right_black');
+		// 		buttonNext.classList.remove('arrow-right_disabled');
+		// 		buttonPrev.classList.remove('arrow-left_black');
+		// 		buttonPrev.classList.add('arrow-left_disabled');
+		// 	}
+		// 	if (sliderCount > 0 && sliderCount <= sliderItem.length) {
+		// 		buttonPrev.classList.remove('arrow-left_disabled');
+		// 		buttonPrev.classList.add('arrow-left_black');
+		// 		buttonNext.classList.remove('arrow-right_disabled');
+		// 		buttonNext.classList.add('arrow-right_black');
+		// 	}
+		// 	if (sliderCount == [sliderItem.length] - 1) {
+		// 		buttonNext.classList.remove('arrow-right_black');
+		// 		buttonNext.classList.add('arrow-right_disabled');
+		// 	}
+	}
+	function setCoeff() {
+		addCoef = window.innerWidth < 640 ? addCoef = 0 :
+			window.innerWidth > 640 && window.innerWidth < 991 ? addCoef = 1 :
+				window.innerWidth > 992 ? addCoef = 1 : '';
+	}
+	setCoeff();
+	console.log(addCoef);
+	// Функция движение слайда
+	function moveSliderPart() {
+		let sliderWidth = sliderPart.offsetWidth + 20;
+		sliderPartLine.style.transform = `translateX(${-(sliderPartCount - 1) * sliderWidth}px)`;
+	}
 	// Автопрокрутка слайдов
 	// setInterval(() => {
-	// 	nextSlide();
-	// }, 3000);
-	//</SLIDER>=================================
+	// 	nextPartSlide();
+	// }, 4000);
+	//</SLIDER-PARTICIPANTS>=================================
 
 	//=================================
 

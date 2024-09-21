@@ -3,6 +3,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	@media (min-width: ($md4+px)) {
 		flex: 0 0 263px;
 	}
@@ -57,6 +58,7 @@
 		border: 1px solid $blueColor;
 		padding: 11px;
 		font-size: 16px;
+		font-weight: 500;
 		@media (any-hover: hover) {
 			&:hover {
 				background-color: $blueColor;
@@ -133,7 +135,7 @@
 		height: 10px;
 		border-radius: 50%;
 		background-color: $grayColor;
-
+		transition: all 0.3s ease 0s;
 		&._active {
 			background-color: $mainColor;
 		}
