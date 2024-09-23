@@ -194,9 +194,13 @@ window.onload = function () { //когда весь контент загруз�
 	buildPartPagination();
 	// Функция Слайдер вперед
 	function nextPartSlide() {
-		sliderPartCount += addCoef;
 		if (sliderPartCount <= sliderPartLength && sliderPartCount >= 1) {
-			paginationCurrent.innerHTML = sliderPartCount;
+			sliderPartCount += addCoef;
+			if (sliderPartCount < sliderPartLength) {
+				paginationCurrent.innerHTML = sliderPartCount;
+			} else {
+				paginationCurrent.innerHTML = sliderPartLength;
+			}
 		} else
 			if (sliderPartCount > sliderPartLength) {
 				sliderPartCount = addCoef;
@@ -206,25 +210,31 @@ window.onload = function () { //когда весь контент загруз�
 	}
 	// Функция Слайдер назад
 	function prevPartSlide() {
-		sliderPartCount -= addCoef;
 		if (sliderPartCount <= sliderPartLength) {
-			paginationCurrent.innerHTML = sliderPartCount;
+			// console.log(sliderPartCount);
+			sliderPartCount -= addCoef;
+			// console.log(sliderPartCount);
+			// paginationCurrent.innerHTML = sliderPartCount;
 		}
 		if (sliderPartCount < addCoef) {
-			sliderPartCount = sliderPartLength;
-			paginationCurrent.innerHTML = sliderPartCount;
+			// sliderPartCount = sliderPartLength - 1;
+			sliderPartCount = sliderPartLength / addCoef;
+			// console.log(sliderPartCount);
+			paginationCurrent.innerHTML = sliderPartLength;
 		}
 		moveSliderPart();
 	}
 	// Функция движение слайда
 	function moveSliderPart() {
+		console.log(sliderPartCount);
+
 		let sliderWidth = sliderPart.offsetWidth + 20;
 		sliderPartLine.style.transform = `translateX(${-((sliderPartCount - addCoef) / addCoef) * sliderWidth}px)`;
 	}
 	// Автопрокрутка слайдов
-	setInterval(() => {
-		nextPartSlide();
-	}, 4000);
+	// setInterval(() => {
+	// 	nextPartSlide();
+	// }, 4000);
 	//</SLIDER-PARTICIPANTS>=================================
 
 	//=================================
