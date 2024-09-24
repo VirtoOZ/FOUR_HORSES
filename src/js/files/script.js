@@ -168,7 +168,6 @@ window.onload = function () { //когда весь контент загруз�
 		let sliderWidth = slider.offsetWidth;
 		sliderLine.style.transform = `translateX(${-sliderCount * sliderWidth}px)`;
 	}
-
 	//</SLIDER-STAGE>=================================
 
 	//<SLIDER-PARTICIPANTS>=================================
