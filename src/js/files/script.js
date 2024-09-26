@@ -32,16 +32,16 @@ window.onload = function () { //когда весь контент загруз�
 		// }
 		// }
 		if (targetElement.classList.contains('arrow-right')) {
-			nextSlide();
+			nextPartSlide(sliderCount, sliderLength, sliderLength, slider, sliderLine);
 		}
 		if (targetElement.classList.contains('arrow-left')) {
-			prevSlide();
+			prevPartSlide(sliderCount, sliderLength, sliderLength, slider, sliderLine);
 		}
 		if (targetElement.classList.contains('controls__arrow_right')) {
-			nextPartSlide();
+			nextPartSlide(currentSlide, allSlide, slideLength, slidePart, slideLine);
 		}
 		if (targetElement.classList.contains('controls__arrow_left')) {
-			prevPartSlide();
+			prevPartSlide(currentSlide, allSlide, slideLength, slidePart, slideLine);
 		}
 		// поиск в шапке, добавляем класс _active для кнопки поиска
 		// if (targetElement.classList.contains('search-form__icon')) {
@@ -120,18 +120,18 @@ window.onload = function () { //когда весь контент загруз�
 		arrowStatus();
 	}
 	// Функция Слайдер вперед
-	function nextSlide() {
-		if (sliderCount >= 0 && sliderCount < [sliderItem.length] - 1) {
-			sliderCount++;
-		} else {
-			return;
-		}
-		moveSlider();
-		arrowStatus();
-		activeBullet();
-	}
+	/* 	function nextSlide() {
+			if (sliderCount >= 0 && sliderCount < [sliderItem.length] - 1) {
+				sliderCount++;
+			} else {
+				return;
+			}
+			moveSlider();
+			arrowStatus();
+			activeBullet();
+		} */
 	// Функция Слайдер назад
-	function prevSlide() {
+	/* function prevSlide() {
 		if (sliderCount >= 1 && sliderCount < sliderItem.length) {
 			sliderCount--;
 			if (sliderCount < 0) {
@@ -141,7 +141,7 @@ window.onload = function () { //когда весь контент загруз�
 			arrowStatus();
 			activeBullet();
 		}
-	}
+	} */
 	// Функция состояния стрелок
 	function arrowStatus() {
 		let buttonNext = document.querySelector('.arrow-right');
@@ -164,17 +164,17 @@ window.onload = function () { //когда весь контент загруз�
 		}
 	}
 	// Функция движение слайда
-	function moveSlider() {
-		let sliderWidth = slider.offsetWidth;
-		sliderLine.style.transform = `translateX(${-sliderCount * sliderWidth}px)`;
-	}
+	/* 	function moveSlider() {
+			let sliderWidth = slider.offsetWidth;
+			sliderLine.style.transform = `translateX(${-sliderCount * sliderWidth}px)`;
+		} */
 	//</SLIDER-STAGE>=================================
 
 	//<SLIDER-PARTICIPANTS>=================================
-	let sliderPart = document.querySelector('.participants__body');
-	let sliderPartLine = document.querySelector('.participants__row');
-	let sliderPartItem = document.querySelectorAll('.participants__column');
-	let sliderPartLength = sliderPartItem.length;
+	let slidePart = document.querySelector('.participants__body');
+	let slideLine = document.querySelector('.participants__row');
+	let slideItem = document.querySelectorAll('.participants__column');
+	let slideLength = slideItem.length;
 	let paginationCurrent = document.querySelector('.controls__pagination-current');
 	let paginationTotal = document.querySelector('.controls__pagination-total>span');
 	let addCoef = 0;
@@ -184,18 +184,19 @@ window.onload = function () { //когда весь контент загруз�
 			window.innerWidth > 992 ? addCoef = 3 : '';
 
 	let sliderPartCount = 1 * addCoef;
-	let sliderNumAll = Math.ceil(sliderPartLength / addCoef);
-	let sliderNum = 0;
+	let allSlide = Math.ceil(slideLength / addCoef);
+	let currentSlide = 0;
+	// addCoef == 1 ? currentSlide = 1 : addCoef >= 2 ? currentSlide = 0 : '';
 
 	function PartPagination() {
 		if (addCoef >= 2) {
-			paginationTotal.innerHTML = sliderPartLength;
-			if (sliderNumAll > 1) {
-				paginationCurrent.innerHTML = sliderNum * addCoef + addCoef;
+			paginationTotal.innerHTML = slideLength;
+			if (allSlide > 1) {
+				paginationCurrent.innerHTML = currentSlide * addCoef + addCoef;
 			}
 		} else {
-			if (sliderPartLength > 1) {
-				paginationTotal.innerHTML = sliderPartLength;
+			if (slideLength > 1) {
+				paginationTotal.innerHTML = slideLength;
 				paginationCurrent.innerHTML = sliderPartCount;
 			}
 		}
@@ -203,63 +204,41 @@ window.onload = function () { //когда весь контент загруз�
 	PartPagination();
 
 	// Функция Слайдер вперед
-	function nextPartSlide() {
-		if (addCoef >= 2) {
-			if (sliderNum >= 0 && sliderNum < sliderNumAll) {
-				paginationCurrent.innerHTML = addCoef + sliderPartCount;
-				sliderNum++;
-			}
-			if (sliderNum == sliderNumAll - 1) {
-				paginationCurrent.innerHTML = sliderPartLength;
-			}
-			if (sliderNum == sliderNumAll) {
-				sliderNum++;
-			}
-			if (sliderNum > sliderNumAll) {
-				sliderNum = 0;
-				PartPagination();
-			}
-		} else {
-			sliderPartCount++;
-			if (sliderPartCount >= 0 && sliderPartCount <= sliderPartLength) {
-				paginationCurrent.innerHTML = sliderPartCount;
-			} else {
-				sliderPartCount = 1;
-				paginationCurrent.innerHTML = sliderPartCount;
-			}
+	function nextPartSlide(current, all, length, slide, line) {
+		if (current >= 0 && current < all) {
+			paginationCurrent.innerHTML = addCoef + sliderPartCount;
+			current++;
 		}
-		movePartSlider();
+		if (current == all - 1) {
+			paginationCurrent.innerHTML = length;
+		}
+		if (current == all) {
+			current++;
+		}
+		if (current > all) {
+			current = 0;
+			PartPagination();
+		}
+		movePartSlider(current, slide, line);
 	}
 
 	// Функция Слайдер назад
-	function prevPartSlide() {
-		if (addCoef >= 2) {
-			if (sliderNum >= 0 && sliderNum <= sliderNumAll) {
-				sliderNum--;
-				if (sliderNum <= -1) {
-					sliderNum = sliderNumAll - 1;
-					paginationCurrent.innerHTML = sliderPartLength;
-				} else PartPagination();
-			}
-		} else if (sliderPartCount >= 1 && sliderPartCount <= sliderPartLength) {
-			sliderPartCount--;
-			paginationCurrent.innerHTML = sliderPartCount;
-			if (sliderPartCount <= 0) {
-				sliderPartCount = sliderPartLength;
-				paginationCurrent.innerHTML = sliderPartCount;
-			}
+	function prevPartSlide(current, all, length, slide, line) {
+		if (current >= 0 && current <= all) {
+			current--;
+			if (current <= -1) {
+				current = all - 1;
+				paginationCurrent.innerHTML = length;
+			} else PartPagination();
 		}
-		movePartSlider();
+		movePartSlider(current, slide, line);
 	}
 
 	// Функция движение слайда
-	function movePartSlider() {
-		let sliderWidth = sliderPart.offsetWidth + 20;
-		if (addCoef >= 2) {
-			sliderPartLine.style.transform = `translateX(${-(sliderNum) * sliderWidth}px)`;
-		} else {
-			sliderPartLine.style.transform = `translateX(${-(sliderPartCount - addCoef) * sliderWidth}px)`;
-		}
+	function movePartSlider(current, slide, line) {
+		let sliderWidth = slide.offsetWidth + 20;
+		line.style.transform = `translateX(${-current * sliderWidth}px)`;
+		slide == slidePart ? currentSlide = current : slide == slider ? sliderCount = current : '';
 	}
 
 	// Автопрокрутка слайдов

@@ -1785,6 +1785,7 @@ ol.counter li::before {
     margin: 0px 0px 28px 0px;
     transition: transform 0.5s ease 0s;
     line-height: 110%;
+    gap: 20px;
   }
 }
 .stages__item {
