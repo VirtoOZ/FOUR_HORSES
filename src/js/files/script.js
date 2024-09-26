@@ -22,72 +22,72 @@ window.onload = function () { //когда весь контент загруз�
 	// Actions (делигирование события click)
 	function documentActions(e) {
 		const targetElement = e.target; // кладем в переменную нажатый объект
-		// if (window.innerWidth > 768 && isMobile.any()) { // если ширина окна меньше 768 и это мобилка
-		// hover для мобилки
-		// if (targetElement.classList.contains('menu__arrow')) {
-		// 	targetElement.closest('.menu__item').classList.toggle('_hover');
-		// }
-		// if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
-		// 	_removeClasses(document.querySelectorAll('.menu__item._hover'), '_hover');
-		// }
-		// }
+		/* 		if (window.innerWidth > 768 && isMobile.any()) { // если ширина окна меньше 768 и это мобилка
+				hover для мобилки
+				if (targetElement.classList.contains('menu__arrow')) {
+					targetElement.closest('.menu__item').classList.toggle('_hover');
+				}
+				if (!targetElement.closest('.menu__item') && document.querySelectorAll('.menu__item._hover').length > 0) {
+					_removeClasses(document.querySelectorAll('.menu__item._hover'), '_hover');
+				}
+				} */
 		if (targetElement.classList.contains('arrow-right')) {
-			nextPartSlide(sliderCount, sliderLength, sliderLength, slider, sliderLine);
+			nextSlide(sliderCount, sliderLength, sliderLength, slider, sliderLine);
 		}
 		if (targetElement.classList.contains('arrow-left')) {
-			prevPartSlide(sliderCount, sliderLength, sliderLength, slider, sliderLine);
+			prevSlide(sliderCount, sliderLength, sliderLength, slider, sliderLine);
 		}
 		if (targetElement.classList.contains('controls__arrow_right')) {
-			nextPartSlide(currentSlide, allSlide, slideLength, slidePart, slideLine);
+			nextSlide(currentSlide, allSlide, slideLength, slidePart, slideLine);
 		}
 		if (targetElement.classList.contains('controls__arrow_left')) {
-			prevPartSlide(currentSlide, allSlide, slideLength, slidePart, slideLine);
+			prevSlide(currentSlide, allSlide, slideLength, slidePart, slideLine);
 		}
-		// поиск в шапке, добавляем класс _active для кнопки поиска
-		// if (targetElement.classList.contains('search-form__icon')) {
-		// 	document.querySelector('.search-form').classList.toggle('_active');
-		// } else if (!targetElement.closest('.search-form') && document.querySelector('.search-form._active')) {
-		// 	document.querySelector('.search-form').classList.remove('_active');
-		// }
-		// подгрузка товаров из JSON, отлавливаем нажатие на кнопку more
-		// if (targetElement.classList.contains('products__more')) {
-		// 	getProducts(targetElement);
-		// 	e.preventDefault();
-		// }
-		// добавление товаров в корзину, ловим нажатие на кнопке Add to card
-		// if (targetElement.classList.contains('actions-product__button')) {
-		// 	const productId = targetElement.closest('.item-product').dataset.pid; // кладем в переменную нажатый объект
-		// 	addToCard(targetElement, productId);
-		// 	e.preventDefault();
-		// }
-		// При нажатии на значек корзины в шапке открываем .cart-header
-		// if (targetElement.classList.contains('cart-header__icon') || targetElement.closest('.cart-header__icon')) {
-		// 	if (document.querySelector('.cart-list').children.length > 0) {
-		// 		document.querySelector('.cart-header').classList.toggle('_active');
-		// 	}
-		// 	e.preventDefault();//при клике на другое место, закрываем окно c товарами
-		// } else if (!targetElement.closest('.cart-header') && !targetElement.classList.contains('actions-product__button')) {
-		// 	document.querySelector('.cart-header').classList.remove('_active');
-		// }
-		// функция удаления из корзины
-		// if (targetElement.classList.contains('cart-list__delete')) {
-		// 	const productId = targetElement.closest('.cart-list__item').dataset.cartPid; // кладем в переменную нажатый объект
-		// 	updateCart(targetElement, productId, false);//false говорит о том что не добавляем, а удаляем объект
-		// 	e.preventDefault();
-		// }
+		/* поиск в шапке, добавляем класс _active для кнопки поиска
+		if (targetElement.classList.contains('search-form__icon')) {
+			document.querySelector('.search-form').classList.toggle('_active');
+		} else if (!targetElement.closest('.search-form') && document.querySelector('.search-form._active')) {
+			document.querySelector('.search-form').classList.remove('_active');
+		}
+		подгрузка товаров из JSON, отлавливаем нажатие на кнопку more
+		if (targetElement.classList.contains('products__more')) {
+			getProducts(targetElement);
+			e.preventDefault();
+		}
+		добавление товаров в корзину, ловим нажатие на кнопке Add to card
+		if (targetElement.classList.contains('actions-product__button')) {
+			const productId = targetElement.closest('.item-product').dataset.pid; // кладем в переменную нажатый объект
+			addToCard(targetElement, productId);
+			e.preventDefault();
+		}
+		При нажатии на значек корзины в шапке открываем .cart-header
+		if (targetElement.classList.contains('cart-header__icon') || targetElement.closest('.cart-header__icon')) {
+			if (document.querySelector('.cart-list').children.length > 0) {
+				document.querySelector('.cart-header').classList.toggle('_active');
+			}
+			e.preventDefault();//при клике на другое место, закрываем окно c товарами
+		} else if (!targetElement.closest('.cart-header') && !targetElement.classList.contains('actions-product__button')) {
+			document.querySelector('.cart-header').classList.remove('_active');
+		}
+		функция удаления из корзины
+		if (targetElement.classList.contains('cart-list__delete')) {
+			const productId = targetElement.closest('.cart-list__item').dataset.cartPid; // кладем в переменную нажатый объект
+			updateCart(targetElement, productId, false);//false говорит о том что не добавляем, а удаляем объект
+			e.preventDefault();
+		} */
 	}
 	//=================================
-	// работа c шабкой при скролле
-	// let headerElement = document.querySelector('.header');
-	// const callback = function (entries, observer) {
-	// 	if (entries[0].isIntersecting) {
-	// 		headerElement.classList.remove('_scroll');
-	// 	} else {
-	// 		headerElement.classList.add('_scroll');
-	// 	}
-	// };
-	// const headerObserver = new IntersectionObserver(callback);
-	// headerObserver.observe(headerElement);
+	/* работа c шабкой при скролле
+	let headerElement = document.querySelector('.header');
+	const callback = function (entries, observer) {
+		if (entries[0].isIntersecting) {
+			headerElement.classList.remove('_scroll');
+		} else {
+			headerElement.classList.add('_scroll');
+		}
+	};
+	const headerObserver = new IntersectionObserver(callback);
+	headerObserver.observe(headerElement); */
 	//<SLIDER-STAGE>=================================
 	let slider = document.querySelector('.stages__slider');
 	let sliderLine = document.querySelector('.stages__items');
@@ -105,17 +105,17 @@ window.onload = function () { //когда весь контент загруз�
 		return;
 	}
 	buildBullets();
-	function activeBullet() {
+	function activeBullet(current) {
 		let paginationDotts = document.querySelectorAll('.controls__dott');
 		for (let index = 0; index < paginationDotts.length; index++) {
 			const paginationDott = paginationDotts[index];
 			paginationDott.classList.remove('_active');
-			if (index == sliderCount) {
+			if (index == current) {
 				paginationDott.classList.add('_active');
 			}
 		}
 	}
-	activeBullet();
+	activeBullet(sliderCount);
 	if (slider) {
 		arrowStatus();
 	}
@@ -182,63 +182,61 @@ window.onload = function () { //когда весь контент загруз�
 	addCoef = window.innerWidth < 640 ? addCoef = 1 :
 		window.innerWidth > 640 && window.innerWidth < 991 ? addCoef = 2 :
 			window.innerWidth > 992 ? addCoef = 3 : '';
-
-	let sliderPartCount = 1 * addCoef;
 	let allSlide = Math.ceil(slideLength / addCoef);
 	let currentSlide = 0;
-	// addCoef == 1 ? currentSlide = 1 : addCoef >= 2 ? currentSlide = 0 : '';
 
-	function PartPagination() {
-		if (addCoef >= 2) {
-			paginationTotal.innerHTML = slideLength;
-			if (allSlide > 1) {
-				paginationCurrent.innerHTML = currentSlide * addCoef + addCoef;
-			}
-		} else {
-			if (slideLength > 1) {
-				paginationTotal.innerHTML = slideLength;
-				paginationCurrent.innerHTML = sliderPartCount;
-			}
-		}
-	}
-	PartPagination();
-
-	// Функция Слайдер вперед
-	function nextPartSlide(current, all, length, slide, line) {
-		if (current >= 0 && current < all) {
-			paginationCurrent.innerHTML = addCoef + sliderPartCount;
-			current++;
+	function PartPagination(current, all, length) {
+		paginationTotal.innerHTML = length;
+		if (all > 1 && current < all - 1) {
+			paginationCurrent.innerHTML = current * addCoef + addCoef;
 		}
 		if (current == all - 1) {
 			paginationCurrent.innerHTML = length;
 		}
+	}
+	PartPagination(currentSlide, allSlide, slideLength);
+
+	// Функция Слайдер вперед
+	function nextSlide(current, all, length, slide, line) {
+		if (current >= 0 && current < all) {
+			current++;
+			PartPagination(current, all, length);
+		}
 		if (current == all) {
 			current++;
+			PartPagination(current, all, length);
 		}
 		if (current > all) {
 			current = 0;
-			PartPagination();
+			PartPagination(current, all, length);
 		}
-		movePartSlider(current, slide, line);
+		moveSlider(current, slide, line);
 	}
 
 	// Функция Слайдер назад
-	function prevPartSlide(current, all, length, slide, line) {
+	function prevSlide(current, all, length, slide, line) {
 		if (current >= 0 && current <= all) {
 			current--;
 			if (current <= -1) {
 				current = all - 1;
 				paginationCurrent.innerHTML = length;
-			} else PartPagination();
+			} else PartPagination(current, all, length);
 		}
-		movePartSlider(current, slide, line);
+		moveSlider(current, slide, line);
 	}
 
 	// Функция движение слайда
-	function movePartSlider(current, slide, line) {
+	function moveSlider(current, slide, line) {
 		let sliderWidth = slide.offsetWidth + 20;
 		line.style.transform = `translateX(${-current * sliderWidth}px)`;
 		slide == slidePart ? currentSlide = current : slide == slider ? sliderCount = current : '';
+		if (slide == slidePart) {
+			currentSlide = current;
+		}
+		if (slide == slider) {
+			sliderCount = current;
+			activeBullet(sliderCount);
+		}
 	}
 
 	// Автопрокрутка слайдов
