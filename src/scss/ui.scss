@@ -69,27 +69,25 @@
 }
 .arrow-left,
 .arrow-right {
-	&_black,
-	&_disabled {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 44px;
-		height: 44px;
-		border-radius: 50%;
-		position: relative;
-		background-color: $mainColor;
-		transition: background-color 0.3s ease 0s;
-		&::before {
-			content: "";
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			background: url("../img/icons/arrow-right.svg") center no-repeat;
-		}
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	position: relative;
+	background-color: #d6d6d6;
+	transition: background-color 0.3s ease 0s;
+	&::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: url("../img/icons/arrow-right.svg") center no-repeat;
 	}
 	// .arrow_black
 	&_black {
+		background-color: $mainColor;
 		@media (any-hover: hover) {
 			&:hover {
 				background-color: $yellowColor;
@@ -97,48 +95,14 @@
 		}
 	}
 	// .arrow_disabled
-	&_disabled {
-		background-color: #d6d6d6;
-	}
+	// &_disabled {
+	// 	background-color: #d6d6d6;
+	// }
 }
 .arrow-left {
 	&_black,
-	&_disabled {
+	& {
 		transform: rotate(-180deg);
-	}
-}
-
-.controls {
-	display: flex;
-	align-items: center;
-	column-gap: 14px;
-	// .controls__arrow
-	&__arrow {
-	}
-	// .controls__pagination
-	&__pagination {
-		display: flex;
-		column-gap: 6px;
-		font-size: 16px;
-	}
-	// .controls__pagination-current
-	&__pagination-current {
-	}
-	// .controls__pagination-total
-	&__pagination-total {
-		display: inline-block;
-		opacity: 0.6;
-	}
-	// .controls__dott
-	&__dott {
-		width: 10px;
-		height: 10px;
-		border-radius: 50%;
-		background-color: $grayColor;
-		transition: all 0.3s ease 0s;
-		&._active {
-			background-color: $mainColor;
-		}
 	}
 }
 //<?ОСНОВНОЙ БЛОК>=================================
