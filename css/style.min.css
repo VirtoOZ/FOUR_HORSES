@@ -680,6 +680,7 @@ textarea.input {
   padding: 11px;
   font-size: 16px;
   font-weight: 500;
+  transition: all 0.3s ease 0s;
 }
 @media (any-hover: hover) {
   .button_blue:hover {
@@ -991,6 +992,7 @@ ol.counter li::before {
   line-height: 108%;
   /* 17.983px */
   text-transform: uppercase;
+  flex: 0 0 452px;
 }
 @media (max-width: 1262px) {
   .logo__text {
@@ -1101,7 +1103,7 @@ ol.counter li::before {
 }
 .main__body {
   margin-top: 36px;
-  height: 576px;
+  min-height: 576px;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -1110,11 +1112,6 @@ ol.counter li::before {
 @media (max-width: 1262px) {
   .main__body {
     margin-top: calc(23px + 13 * ((100vw - 375px) / 887));
-  }
-}
-@media (max-width: 1262px) {
-  .main__body {
-    height: calc(707px + -131 * ((100vw - 375px) / 887));
   }
 }
 .main__content {
@@ -1244,6 +1241,16 @@ ol.counter li::before {
 @media (max-width: 1262px) {
   .main-content__text:not(:last-child) {
     margin-bottom: calc(32px + 8 * ((100vw - 375px) / 887));
+  }
+}
+.main-content__buttons {
+  position: relative;
+  z-index: 4;
+  margin-bottom: 130px;
+}
+@media (max-width: 1262px) {
+  .main-content__buttons {
+    margin-bottom: calc(291px + -161 * ((100vw - 375px) / 887));
   }
 }
 @media (min-width: 639.98px) {
@@ -1522,6 +1529,7 @@ ol.counter li::before {
 .visit__image {
   padding: 0px 0px 20.4582651391% 0px;
   flex: 0 0 32.2422258592%;
+  transition: all 0.3s ease 0s;
 }
 @media (max-width: 767.98px) {
   .visit__image {
@@ -1532,6 +1540,11 @@ ol.counter li::before {
 }
 .visit__image img {
   border-radius: 50%;
+}
+@media (any-hover: hover) {
+  .visit__image:hover {
+    transform: scale(1.05);
+  }
 }
 
 @media (min-width: 991.98px) {
@@ -1559,6 +1572,14 @@ ol.counter li::before {
     padding: 0px 0px 420px 0px;
     width: 374px;
     margin: 0px 0px 19px 0px;
+  }
+}
+.session__media img {
+  transition: all 0.3s ease 0s;
+}
+@media (any-hover: hover) {
+  .session__media img:hover {
+    transform: scale(1.05);
   }
 }
 .session__content {
