@@ -153,7 +153,8 @@ body {
 	// .main__body
 	&__body {
 		@include adaptiv-value("margin-top", 36, 23, 1);
-		@include adaptiv-value("height", 576, 707, 1);
+		min-height: 576px;
+		// @include adaptiv-value("height", 576, 707, 1);
 		display: flex;
 		justify-content: space-between;
 		position: relative;
@@ -262,6 +263,9 @@ body {
 	}
 	// .main-content__buttons
 	&__buttons {
+		position: relative;
+		z-index: 4;
+		@include adaptiv-value("margin-bottom", 130, 291, 1);
 		@media (min-width: ($md4+px)) {
 			display: flex;
 		}
@@ -436,6 +440,7 @@ body {
 	&__image {
 		padding: 0px 0px calc(250 / 1222 * 100%) 0px;
 		flex: 0 0 calc(394 / 1222 * 100%);
+		transition: all 0.3s ease 0s;
 		@media (max-width: ($md3+px)) {
 			padding: 0px 0px 212px 0px;
 			width: 335px;
@@ -443,6 +448,11 @@ body {
 		}
 		img {
 			border-radius: 50%;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.05);
+			}
 		}
 	}
 }
@@ -479,8 +489,13 @@ body {
 			// display: inline-block;
 			margin: 0px 0px 19px 0px;
 		}
-
 		img {
+			transition: all 0.3s ease 0s;
+			@media (any-hover: hover) {
+				&:hover {
+					transform: scale(1.05);
+				}
+			}
 			@media (max-width: ($md5+px)) {
 				// margin: 0px -20px;
 			}
