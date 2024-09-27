@@ -688,9 +688,8 @@ textarea.input {
   }
 }
 
-.arrow-left_black, .arrow-left_disabled,
-.arrow-right_black,
-.arrow-right_disabled {
+.arrow-left,
+.arrow-right {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -698,17 +697,20 @@ textarea.input {
   height: 44px;
   border-radius: 50%;
   position: relative;
-  background-color: #313131;
+  background-color: #d6d6d6;
   transition: background-color 0.3s ease 0s;
 }
-.arrow-left_black::before, .arrow-left_disabled::before,
-.arrow-right_black::before,
-.arrow-right_disabled::before {
+.arrow-left::before,
+.arrow-right::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   background: url("../img/icons/arrow-right.svg") center no-repeat;
+}
+.arrow-left_black,
+.arrow-right_black {
+  background-color: #313131;
 }
 @media (any-hover: hover) {
   .arrow-left_black:hover,
@@ -716,38 +718,9 @@ textarea.input {
     background-color: #fbce51;
   }
 }
-.arrow-left_disabled,
-.arrow-right_disabled {
-  background-color: #d6d6d6;
-}
 
-.arrow-left_black, .arrow-left_disabled {
+.arrow-left_black, .arrow-left {
   transform: rotate(-180deg);
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  column-gap: 14px;
-}
-.controls__pagination {
-  display: flex;
-  column-gap: 6px;
-  font-size: 16px;
-}
-.controls__pagination-total {
-  display: inline-block;
-  opacity: 0.6;
-}
-.controls__dott {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #d9d9d9;
-  transition: all 0.3s ease 0s;
-}
-.controls__dott._active {
-  background-color: #313131;
 }
 
 .row::after {
@@ -1108,6 +1081,12 @@ ol.counter li::before {
 .title span {
   color: #f54932;
   font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
 }
 
 .main {
@@ -1950,6 +1929,22 @@ ol.counter li::before {
   }
 }
 
+.controls-stages__pagination {
+  display: flex;
+  column-gap: 6px;
+  font-size: 16px;
+}
+.controls-stages__dott {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  transition: all 0.3s ease 0s;
+}
+.controls-stages__dott._active {
+  background-color: #313131;
+}
+
 .participants__body {
   overflow: hidden;
 }
@@ -2062,6 +2057,10 @@ ol.counter li::before {
 }
 .item-participants__info:not(:last-child) {
   margin: 0px 0px 20px 0px;
+}
+.controls-participants__pagination-total {
+  display: inline-block;
+  opacity: 0.6;
 }
 /* .breadcrumbs {
 	overflow: auto;
