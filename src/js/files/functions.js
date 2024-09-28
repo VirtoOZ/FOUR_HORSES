@@ -30,9 +30,16 @@ isWebp();
 export function ibg() {
 	// if (isIE()) {
 	let ibg = document.querySelectorAll('._ibg');
+
 	for (let i = 0; i < ibg.length; i++) {
-		if (ibg[i].querySelector('img')) {
-			ibg[i].style.backgroundImage = 'url(' + ibg[i].querySelector('img').getAttribute('src') + ')';
+		let img = ibg[i].querySelector('img');
+		if (img) {
+			ibg[i].style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
+			ibg[i].style.backgroundPosition = '0 0';
+			ibg[i].style.backgroundSize = 'cover';
+
+			img.style.opacity = '0';
+			img.style.visibility = 'hidden';
 		}
 		// }
 	}
