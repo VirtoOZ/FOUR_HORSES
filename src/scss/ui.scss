@@ -10,8 +10,7 @@
 	// .button_black
 	&_black,
 	&_border {
-		padding-left: 20px;
-		padding-right: 20px;
+		padding: 0 20px;
 		border-radius: 66px;
 		text-align: center;
 		@include adaptiv-value("padding-top", 18, 16, 1);
@@ -19,9 +18,7 @@
 		font-size: 16px;
 		font-weight: 500;
 		line-height: 130%;
-		transition:
-			clolor 0.3s ease 0s,
-			background-color 0.3s ease 0s;
+		transition: all 0.3s ease 0s;
 	}
 	// .button_black
 	&_black {
@@ -42,18 +39,18 @@
 			&:hover {
 				background-color: #1f1f1f;
 				color: #fff;
+				border-color: #1f1f1f;
 			}
 		}
 		@media (max-width: ($md5+px)) {
 			background-color: rgba(255, 255, 255, 0.9);
-			border: 2px solid rgba(255, 255, 255, 0.9);
+			border-color: rgba(255, 255, 255, 0.9);
 		}
 	}
 	// .button_blue
 	&_blue {
 		text-align: center;
 		color: $blueColor;
-		// line-height: 120%; /* 19.2px */
 		border-radius: 62px;
 		border: 1px solid $blueColor;
 		padding: 11px;
@@ -95,10 +92,6 @@
 			}
 		}
 	}
-	// .arrow_disabled
-	// &_disabled {
-	// 	background-color: #d6d6d6;
-	// }
 }
 .arrow-left {
 	&_black,
@@ -106,86 +99,17 @@
 		transform: rotate(-180deg);
 	}
 }
-//<?ОСНОВНОЙ БЛОК>=================================
+//</ОСНОВНОЙ БЛОК>=================================
 
 //<ГОТОВЫЕ КЛАССЫ>=================================
-.row::after {
-	display: block;
-	content: "";
-	clear: both;
-}
-// добавляет значек рубля
-.rub::after {
-	content: "₽";
-}
-//=================================
-%noselect {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
 //<COUNTER>=================================
 // Подсчёт средствами css
-ol.counter {
-	list-style-type: none;
-	counter-reset: item;
-	li {
-		position: relative;
-		padding: 0px 0px 0px 45px;
-		&::before {
-			counter-increment: item;
-			content: counter(item);
-			position: absolute;
-			width: 28px;
-			height: 28px;
-			top: 0;
-			left: 0;
-			color: #818181;
-			font-size: 14px;
-			font-weight: 700;
-			text-align: center;
-			line-height: 26px;
-			border-radius: 50%;
-			border: 1px solid #4274bb;
-		}
-	}
-}
 //</COUNTER>=================================
 
-//=================================
-.ellipsis {
-	display: block;
-	overflow: hidden;
-	width: 100%;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-.es {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-//=================================
+//<ELIPSIS>=================================
+//</ELIPSIS>=================================
 
 //<TABLE>=================================
-.table {
-	display: table;
-	font-size: 0;
-	width: 100%;
-	//table-layout: fixed;
-}
-.trow {
-	display: table-row;
-}
-.cell {
-	display: table-cell;
-	&.full {
-		width: 100%;
-	}
-}
 //</TABLE>=================================
 
 //<_IBG>=================================
@@ -216,160 +140,18 @@ ol.counter {
 //</_IBG>=================================
 
 //<VIDEO>=================================
-.video {
-	position: relative;
-	overflow: hidden;
-	height: 0;
-	padding-bottom: 56.25%;
-	video,
-	iframe,
-	object,
-	embed {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-}
-.videobg {
-	video,
-	iframe,
-	object,
-	embed {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		min-width: 100%;
-		min-height: 100%;
-		width: auto;
-		height: auto;
-		z-index: -100;
-		transform: translatex(-50%) translateY(-50%);
-		background-size: cover;
-	}
-}
 //</VIDEO>=================================
 
 //<MORETEXT>=================================
-.moretext {
-	overflow: hidden;
-}
-.moretext_more {
-	cursor: pointer;
-	span {
-		font-style: normal;
-		&:first-child {
-			display: block;
-		}
-		&:last-child {
-			display: none;
-		}
-	}
-	&.active {
-		span {
-			font-style: normal;
-			&:first-child {
-				display: none;
-			}
-			&:last-child {
-				display: block;
-			}
-		}
-	}
-}
 //</MORETEXT>=================================
 
 //<GREY-STYLE>=================================
-// даем контенту серым цвет, что бы потом при
-// ховере можно было вернуть цвет
-%graystyle {
-	transition: all 0.3s ease 0s;
-	filter: grayscale(1);
-	-webkit-filter: grayscale(1);
-	-moz-filter: grayscale(1);
-	-o-filter: grayscale(1);
-}
-%graystyleoff {
-	filter: grayscale(0);
-	-webkit-filter: grayscale(0);
-	-moz-filter: grayscale(0);
-	-o-filter: grayscale(0);
-}
+/* даем контенту серый цвет, что бы потом при
+ховере можно было вернуть цвет */
 //</GREY-STYLE>=================================
 
 //</MAP>=================================
-#map {
-	background: url(" ../img/icons/loading.gif") center / 50px no-repeat;
-}
 //</MAP>=================================
 
 //<SWIPER>=================================
-._swiper {
-	// margin-left: auto;
-	// margin-right: auto;
-	position: relative;
-	overflow: hidden;
-	list-style: none;
-	padding: 0;
-	z-index: 1;
-}
-.slider-arrows {
-	display: grid;
-	grid-template-columns: repeat(2, 48px);
-	column-gap: 8px;
-}
-.slider-arrow {
-	// .slider-arrow_prev
-	&_prev {
-	}
-	// .slider-arrow_next
-	&_next {
-	}
-}
-.swiper-pagination-bullets {
-	display: flex;
-	flex-wrap: wrap;
-}
-.swiper-pagination-bullet {
-	cursor: pointer;
-	flex: 0 0 27px;
-	height: 27px;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 2px 0px;
-	&:not(:last-child) {
-		margin-right: 12px;
-	}
-	&::before {
-		content: "";
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		// border: 1px solid $orangeColor;
-		border-radius: 50%;
-		transition: transform 0.3s ease 0s;
-		transform: scale(0);
-	}
-	&::after {
-		content: "";
-		width: 11px;
-		height: 11px;
-		background-color: #d8d8d8;
-		border-radius: 50%;
-		transition: background-color 0.3s ease 0s;
-	}
-}
-.swiper-pagination-bullet-active {
-	&::after {
-		// background-color: $orangeColor;
-	}
-	&::before {
-		transform: scale(1);
-	}
-}
 //</SWIPER>=================================

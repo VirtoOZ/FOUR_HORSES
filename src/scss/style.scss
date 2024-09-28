@@ -3,7 +3,6 @@
 //</МИКСИНЫ>=================================
 
 //<ШРИФТЫ>=================================
-
 //<Подключаем шрифты>=================================
 //&display=swap&subset=cyrillic-ext
 @import "fonts";
@@ -13,16 +12,14 @@
 // @import "icons";
 //</Иконочные шрифты>=================================
 
-//<Swiper>=================================
-// @import "swiper";
-//</Swiper>=================================
-
 //<Шрифт по умолчанию>=================================
 $fontFamily: "GolosText";
 $fontSize: 20px;
 //</Шрифт по умолчанию>=================================
-
 //</ШРИФТЫ>=================================
+
+//<Swiper>=================================
+//</Swiper>=================================
 
 //<ПЕРЕМЕННЫЕ>=================================
 $minWidth: 375;
@@ -70,22 +67,15 @@ body {
 	max-width: $maxWidthContainer + px;
 	margin: 0px auto;
 	padding: 0px 20px;
-	// @media (max-width: ($md3+px)) {
-	// 	padding: 0 10px;
-	// }
-	// @media (max-width: ($md4+px)) {
-	// 	padding: 0px 5px;
-	// }
 }
 //</ОГРАНИЧИВАЮЩИЙ КОНТЕЙНЕР>=================================
 
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>=================================
-@import "forms";
 @import "ui";
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>=================================
 
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>=================================
-//@import "datepicker";
+// @import "datepicker";
 // @import "../scss/libs/gallery/lightgallery";
 // @import "popup";
 @import "header";
@@ -126,7 +116,8 @@ body {
 	font-weight: 400;
 	line-height: 135%; /* 48.6px */
 	text-transform: uppercase;
-	span {
+	// .title_red
+	&_red {
 		color: $redColor;
 		font-weight: 700;
 	}
@@ -242,7 +233,13 @@ body {
 	&__title {
 		@include adaptiv-value("font-size", 60, 36, 1);
 		line-height: 110%; /* 66px */
-		p {
+		// .main-content__title_center
+		&_center,
+		// .main-content__title_right
+		&_right {
+			display: block;
+		}
+		span {
 			text-align: right;
 			&:not(:last-child) {
 				text-align: center;
@@ -434,6 +431,10 @@ body {
 					margin: 0px 0px 24px 0px;
 				}
 			}
+		}
+		// .visit__title_normal
+		&_normal {
+			color: $mainColor;
 		}
 	}
 	// .visit__image
@@ -652,7 +653,6 @@ body {
 		span {
 			display: block;
 			@include adaptiv-value("font-size", 20, 18, 1);
-			// vertical-align: middle;
 			line-height: 120%;
 			text-transform: none;
 			color: $blueColor;
@@ -882,7 +882,6 @@ body {
 		}
 	}
 }
-
 //</STAGES>=================================
 
 //<PARTICIPANTS>=================================
@@ -1020,36 +1019,6 @@ body {
 //</PARTICIPANTS>=================================
 
 //<ХЛЕБНЫЕ КРОШКИ>=================================
-/* .breadcrumbs {
-	overflow: auto;
-	margin: 0px 0px 20px 0px;
-	height: 20px;
-	// .breadcrumbs__list
-	&__list {
-		display: flex;
-		align-items: center;
-		white-space: nowrap;
-		li {
-			margin: 0px 10px 0px 0px;
-			padding: 0px 20px 0px 0px;
-			background: url("../img/icons/arrow_text.png") right / 10px no-repeat;
-			&:last-child {
-				margin: 0px 0px 0px 0px;
-				background: none;
-			}
-		}
-	}
-	// .breadcrumbs__link
-	&__link {
-		color: #1ab9ce;
-		text-decoration: underline;
-	}
-	// .breadcrumbs__item
-	&__item {
-		color: 999px;
-		font-weight: 300;
-	}
-} */
 //</ХЛЕБНЫЕ КРОШКИ>=================================
 
 //</ОСНОВНОЙ БЛОК>=================================
