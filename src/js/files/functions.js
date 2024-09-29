@@ -30,14 +30,12 @@ isWebp();
 export function ibg() {
 	// if (isIE()) {
 	let ibg = document.querySelectorAll('._ibg');
-
 	for (let i = 0; i < ibg.length; i++) {
 		let img = ibg[i].querySelector('img');
 		if (img) {
 			ibg[i].style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
 			ibg[i].style.backgroundPosition = '0 0';
 			ibg[i].style.backgroundSize = 'cover';
-
 			img.style.opacity = '0';
 			img.style.visibility = 'hidden';
 		}
@@ -46,18 +44,18 @@ export function ibg() {
 }
 ibg();
 
-let ua = window.navigator.userAgent;
-let msie = ua.indexOf("MSIE ");
-function isIE() {
-	ua = navigator.userAgent;
-	let is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
-	return is_ie;
-}
+// let ua = window.navigator.userAgent;
+// let msie = ua.indexOf("MSIE ");
+// function isIE() {
+// 	ua = navigator.userAgent;
+// 	let is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
+// 	return is_ie;
+// }
 //</IE Ibg>=================================
 
 //<isMobile>================================================================
 //Проверка на каком устройстве работаем
-export const isMobile = {
+/* export const isMobile = {
 	Android: function () {
 		return navigator.userAgent.match(/Android/i);
 	},
@@ -86,7 +84,7 @@ if (isMobile.any()) {
 	document.body.classList.add('_touch');
 } else {
 	document.body.classList.add('_pc');
-}
+} */
 // Возвращает мобильный с которого зашли
 // export const isMobile = function () {
 // 	var check = false;

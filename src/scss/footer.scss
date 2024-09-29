@@ -6,7 +6,7 @@
 	}
 	// .footer__body
 	&__body {
-		@include adaptiv-value("padding-top", 40, 78, 1);
+		padding-top: 40px;
 		@include adaptiv-value("padding-bottom", 72, 60, 1);
 	}
 	// .footer__text
