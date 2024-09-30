@@ -180,7 +180,8 @@ body {
 	margin: 0px auto;
 	overflow: hidden;
 	@include adaptiv-value("width", 2223, 1640, 1);
-	background-color: #f54932;
+	// background-color: #f54932;
+	background-color: #e6230a;
 	// .running-line__body
 	&__body {
 		display: flex;
@@ -193,8 +194,8 @@ body {
 			@include adaptiv-value("padding-top", 18, 10, 1);
 			@include adaptiv-value("padding-bottom", 18, 10, 1);
 			color: #fff;
-			@include adaptiv-value("font-size", 22, 16, 1);
-			font-weight: 500;
+			@include adaptiv-value("font-size", 24, 18, 1);
+			font-weight: 600;
 			line-height: 110%; /* 24.2px */
 			text-transform: uppercase;
 			span {
@@ -426,7 +427,7 @@ body {
 	&__image {
 		padding: 0px 0px calc(250 / 1222 * 100%) 0px;
 		flex: 0 0 calc(394 / 1222 * 100%);
-		transition: all 0.3s ease 0s;
+		transition: transform 0.3s ease 0s;
 		border-radius: 50%;
 		@media (max-width: ($md3+px)) {
 			padding: 0px 0px 212px 0px;
@@ -475,7 +476,7 @@ body {
 	}
 	// .session__media
 	&__media {
-		transition: all 0.3s ease 0s;
+		transition: transform 0.3s ease 0s;
 		@media (min-width: ($md2+px)) {
 			position: relative;
 			flex: 0 0 calc(474 / 1222 * 100%);
@@ -685,6 +686,12 @@ body {
 			gap: 20px;
 		}
 	}
+	.stages__item_big .stages__item::before,
+	.item-stages_big .item-stages::before {
+		@media (max-width: ($md4+px)) {
+			background: none;
+		}
+	}
 	// .stages__item
 	&__item {
 		position: relative;
@@ -693,7 +700,7 @@ body {
 		flex-wrap: wrap;
 		background-color: #e9ded4;
 		padding: 20px;
-		transition: all 0.3s ease 0s;
+		transition: transform 0.3s ease 0s;
 		&::before {
 			content: "";
 			display: block;
@@ -715,9 +722,6 @@ body {
 		@media (any-hover: hover) {
 			&:hover {
 				transform: scale(1.03);
-				.item-stages__text {
-					color: #000;
-				}
 			}
 		}
 		& > .stages__item {
@@ -725,18 +729,15 @@ body {
 		}
 		// .stages__item_big
 		&_big {
-			@media (max-width: ($md4+px)) {
-				& .item-stages::before {
-					background: none;
-				}
-			}
 		}
+		// .stages__item_bigh
 		&_bigh {
 			@media (min-width: ($md2+px)) {
 				grid-column: 3 / 4;
 				grid-row: 1 / span 2;
 			}
 		}
+		// .stages__item_bigw
 		&_bigw {
 			@media (min-width: ($md2+px)) {
 				grid-column: 2 / span 2;
@@ -755,11 +756,6 @@ body {
 .item-stages {
 	// .item-stages_big
 	&_big {
-		@media (max-width: ($md4+px)) {
-			& .item-stages::before {
-				background: none;
-			}
-		}
 	}
 	// .item-stages__body
 	&__body {
@@ -871,7 +867,7 @@ body {
 		height: 10px;
 		border-radius: 50%;
 		background-color: $grayColor;
-		transition: all 0.3s ease 0s;
+		transition: background-color 0.3s ease 0s;
 		&._active {
 			background-color: $mainColor;
 		}
