@@ -187,14 +187,14 @@ body {
 		width: 200%;
 		animation: running-line 15s linear infinite;
 		p {
+			white-space: nowrap;
 			width: 100%;
 			@include adaptiv-value("max-height", 60, 38, 1);
-			// @include adaptiv-value("width", 1920, auto, 1);
-			white-space: nowrap;
 			@include adaptiv-value("padding-top", 18, 10, 1);
 			@include adaptiv-value("padding-bottom", 18, 10, 1);
 			color: #fff;
 			@include adaptiv-value("font-size", 22, 16, 1);
+			font-weight: 500;
 			line-height: 110%; /* 24.2px */
 			text-transform: uppercase;
 			span {
@@ -811,9 +811,6 @@ body {
 		// animation: air-plane-1 2s linear 1;
 		animation: air-plane-2 5s linear infinite;
 		// animation: air-plane-3 2s linear 1;
-		img {
-			transform: rotate(-15.3deg);
-		}
 		@media (min-width: ($md1+px)) {
 			bottom: 70px;
 			right: -50px;
@@ -836,13 +833,13 @@ body {
 		}
 		@keyframes air-plane-2 {
 			0% {
-				transform: rotate(0deg) translate(0%, 0%);
+				transform: rotate(-15.3deg) translate(0%, 0%);
 			}
 			50% {
-				transform: rotate(1deg) translate(0%, 7%);
+				transform: rotate(-14.3deg) translate(0%, 7%);
 			}
 			100% {
-				transform: rotate(0deg) translate(0%, 0%);
+				transform: rotate(-15.3deg) translate(0%, 0%);
 			}
 		}
 		@keyframes air-plane-3 {
@@ -920,7 +917,6 @@ body {
 	// .participants__row
 	&__row {
 		display: flex;
-
 		margin: 0px -10px;
 		transition: all 0.3s ease 0s;
 		@media (max-width: ($md2+px)) {
