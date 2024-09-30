@@ -3,6 +3,8 @@
 // Добавление класса webp или no-webp для HTML
 // в зависимости от поддержки браузером
 
+// import { sources } from "webpack";
+
 export function isWebp() {
 	// Проверка поддержки webp
 	function testWebP(callback) {
@@ -31,18 +33,22 @@ export function ibg() {
 	// if (isIE()) {
 	let ibg = document.querySelectorAll('._ibg');
 	for (let i = 0; i < ibg.length; i++) {
-		let img = ibg[i].querySelector('img');
-		if (img) {
-			ibg[i].style.backgroundImage = 'url(' + img.getAttribute('src') + ')';
+		let imageImg = ibg[i].querySelector('img');
+		let imageWebp = ibg[i].querySelector('[type="image/webp"]');
+		if (imageImg) {
+			if (document.documentElement.classList.contains('webp')) {
+				ibg[i].style.backgroundImage = 'url(' + imageWebp.getAttribute('srcset') + ')';
+			}
+			else ibg[i].style.backgroundImage = 'url(' + imageImg.getAttribute('src') + ')';
 			ibg[i].style.backgroundPosition = '0 0';
 			ibg[i].style.backgroundSize = 'cover';
-			img.style.opacity = '0';
-			img.style.visibility = 'hidden';
+			imageImg.style.opacity = '0';
+			imageImg.style.visibility = 'hidden';
 		}
 		// }
 	}
 }
-ibg();
+// ibg();
 
 // let ua = window.navigator.userAgent;
 // let msie = ua.indexOf("MSIE ");

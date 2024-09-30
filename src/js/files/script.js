@@ -15,10 +15,10 @@
 //Проверка на каком устройстве работаем
 // import { isMobile } from "./functions.js";
 //</isMobile>=================================
-
+import { ibg } from "./functions.js";
 window.onload = function () { //когда весь контент загрузится
 	document.addEventListener("click", documentActions);
-
+	ibg();
 	// Actions (делигирование события click)
 	function documentActions(e) {
 		const targetElement = e.target; // кладем в переменную нажатый объект
