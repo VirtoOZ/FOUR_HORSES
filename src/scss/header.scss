@@ -35,47 +35,40 @@
 	}
 	// .logo__horse
 	&__horse {
+		// .logo__horse_1
+		&_1 {
+			animation: horseInLeft 0.8s ease 0.6s;
+		}
+		// .logo__horse_2
+		&_2 {
+			animation: horseInLeft 0.8s ease 0.4s;
+		}
+		// .logo__horse_3
+		&_3 {
+			animation: horseInLeft 0.8s ease 0.2s;
+		}
+		// .logo__horse_4
+		&_4 {
+			animation: horseInLeft 0.8s ease 0s;
+		}
 		@include adaptiv-value("margin-right", 2, 1, 1);
-		animation: myAnim 2s ease 0s 1 normal forwards;
 		img {
 			@include adaptiv-value("width", 21.65, 18.75, 1);
 			@include adaptiv-value("height", 31.2, 27, 1);
 		}
-		@keyframes myAnim {
+		@keyframes horseInLeft {
 			0% {
-				animation-timing-function: ease-in;
 				opacity: 0;
-				transform: translateX(-250px);
+				transform: translateX(-30px);
 			}
-			38% {
-				animation-timing-function: ease-out;
+			60% {
 				opacity: 1;
-				transform: translateX(0);
+				transform: translateX(3px);
 			}
-			55% {
-				animation-timing-function: ease-in;
-				transform: translateX(-68px);
+			80% {
+				transform: translateX(-3px);
 			}
-			72% {
-				animation-timing-function: ease-out;
-				transform: translateX(0);
-			}
-			81% {
-				animation-timing-function: ease-in;
-				transform: translateX(-28px);
-			}
-			90% {
-				animation-timing-function: ease-out;
-				transform: translateX(0);
-			}
-
-			95% {
-				animation-timing-function: ease-in;
-				transform: translateX(-8px);
-			}
-
 			100% {
-				animation-timing-function: ease-out;
 				transform: translateX(0);
 			}
 		}
