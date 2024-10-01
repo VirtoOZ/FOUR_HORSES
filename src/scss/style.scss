@@ -137,12 +137,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
-	// justify-content: flex-end;
-
 	// .main__container
 	&__container {
 		width: 100%;
-
 		flex: 1 1 auto;
 		display: flex;
 	}
