@@ -36,7 +36,7 @@ export function ibg() {
 		let imageImg = ibg[i].querySelector('img');
 		let imageWebp = ibg[i].querySelector('[type="image/webp"]');
 		if (imageImg) {
-			if (document.documentElement.classList.contains('webp')) {
+			if (document.documentElement.classList.contains('webp') && imageWebp) {
 				ibg[i].style.backgroundImage = 'url(' + imageWebp.getAttribute('srcset') + ')';
 			}
 			else ibg[i].style.backgroundImage = 'url(' + imageImg.getAttribute('src') + ')';

@@ -134,12 +134,22 @@ body {
 	position: relative;
 	z-index: 1;
 	background-color: #e9ded4;
-	// .main__wrapper
-	&__wrapper {
-		position: relative;
-	}
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	// justify-content: flex-end;
+
 	// .main__container
 	&__container {
+		width: 100%;
+
+		flex: 1 1 auto;
+		display: flex;
+	}
+	// .main__wrapper
+	&__wrapper {
+		flex: 1 1 auto;
+		position: relative;
 	}
 	// .main__body
 	&__body {
@@ -176,6 +186,7 @@ body {
 }
 .running-line {
 	position: relative;
+	// bottom: 0;
 	z-index: 3;
 	margin: 0px auto;
 	overflow: hidden;
