@@ -194,8 +194,8 @@ body {
 			@include adaptiv-value("padding-top", 18, 10, 1);
 			@include adaptiv-value("padding-bottom", 18, 10, 1);
 			color: #fff;
-			@include adaptiv-value("font-size", 24, 18, 1);
-			font-weight: 600;
+			@include adaptiv-value("font-size", 22, 16, 1);
+			font-weight: 400;
 			line-height: 110%; /* 24.2px */
 			text-transform: uppercase;
 			span {
