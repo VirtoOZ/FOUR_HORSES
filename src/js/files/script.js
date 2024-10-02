@@ -242,9 +242,86 @@ window.onload = function () { //когда весь контент загруз�
 	}, 4000);
 	//</SLIDER-PARTICIPANTS>=================================
 
-	//=================================
+	//<PARALAX>=================================
+	const parallax = document.querySelector('.main');
+	if (parallax) {
+		const content = document.querySelector('.main-content');
+		const sun = document.querySelector('.main-wrapper__sun');
+		const city = document.querySelector('.main-wrapper__city');
+		const chessBehind = document.querySelector('.main-wrapper__chess-behind');
+		const chessFront = document.querySelector('.main-wrapper__chess-front');
 
-	//=================================
+		//-Коэффициенты
+		const forSun = 3;
+		const forCity = 50;
+		const forChessBehind = 20;
+		const forChessFront = 50;
+
+		// Скорость анимации
+		const speed = 0.05;
+
+		// Объявление переменных
+		let positionX = 0, positionY = 0;
+		let coordXprocent = 0, coordYprocent = 0;
+
+		function setMouseParallaxStyle() {
+			const distX = coordXprocent - positionX;
+			const distY = coordYprocent - positionY;
+
+			positionX = positionX + (distX * speed);
+			positionY = positionY + (distY * speed);
+
+			// Передаем стили
+			sun.style.cssText = `transform: translate(${positionX / forSun}%,${positionY / forSun}%);`;
+			city.style.cssText += `transform: translate(${positionX / forCity}%,${positionY / forCity}%);`;
+			chessBehind.style.cssText += `transform: translate(${positionX / forChessBehind}%,${positionY / forChessBehind}%);`;
+			chessFront.style.cssText += `transform: translate(${positionX / forChessFront}%,${positionY / forChessFront}%);`;
+
+			requestAnimationFrame(setMouseParallaxStyle);
+			// console.log(chessBehind.style.cssText = `transform: translate(${positionX / forChessBehind}%,${positionY / forChessBehind}%);`);
+
+		}
+		setMouseParallaxStyle();
+
+		parallax.addEventListener("mousemove", function (e) {
+			// Получение -ширины и высоты блока
+			const parallaxWidth = parallax.offsetWidth;
+			const parallaxHeight = parallax.offsetHeight;
+			// console.log(parallaxHeight);
+
+
+			// Ноль по середине
+			const coordX = e.pageX - parallaxWidth / 2;
+			const coordY = e.pageY - parallaxHeight / 2;
+
+			// Получаем проценты
+			coordXprocent = coordX / parallaxWidth * 100;
+			coordYprocent = coordY / parallaxHeight * 100;
+		});
+		// ParalLax при скролле
+
+		/* 		let thresholdSets = [];
+				for (let i = 0; i <= 1.0; i += 0.005) {
+					thresholdSets.push(i);
+				} */
+		/* const callback = function (entries, observer) {
+			const scrollTopProcent = window.pageYOffset / parallax.offsetHeight * 100;
+			setParallaxItemsStyle(scrollTopProcent);
+		}; */
+		/* const observer = new IntersectionObserver(callback, {
+			threshold: thresholdSets
+		}); */
+
+		// observer.observe(document.querySelector('.visit'));
+
+		/* function setParallaxItemsStyle(scrollTopProcent) {
+			content.style.cssText = `transform: translate(0%,-${scrollTopProcent / 9}%);`;
+			city.parentElement.style.cssText = `transform: translate(0%,-${scrollTopProcent / 6}%);`;
+			chessBehind.parentElement.style.cssText = `transform: translate(0%,-${scrollTopProcent / 3}%);`;
+			chessFront.parentElement.style.cssText = `transform: translate(0%,-${scrollTopProcent / 1.5}%);`;
+		} */
+	}
+	//</PARALAX>=================================
 	// обновление корзины. Добавляет и удаляет товары
 
 }

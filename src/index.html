@@ -29,10 +29,14 @@
 								<img src="@img/main/elips-text.svg" alt="Текстстовый ореол">
 							</div>
 						</div>
-						<div class="main-wrapper__chess_king _ibg"><img src="@img/main/chess-king.png" alt="Король"></div>
-						<div class="main-wrapper__chess_queen _ibg"><img src="@img/main/chess-queen.png" alt="Королева"></div>
-						<div class="main-wrapper__chess_horse _ibg"><img src="@img/main/chess-horse.png" alt="Конь"></div>
-						<div class="main-wrapper__chess_pawn _ibg"><img src="@img/main/chess-pawn.png" alt="Пешка"></div>
+						<div class="main-wrapper__chess-behind">
+							<div class="main-wrapper__chess_king _ibg"><img src="@img/main/chess-king.png" alt="Король"></div>
+							<div class="main-wrapper__chess_queen _ibg"><img src="@img/main/chess-queen.png" alt="Королева"></div>
+						</div>
+						<div class="main-wrapper__chess-front">
+							<div class="main-wrapper__chess_horse _ibg"><img src="@img/main/chess-horse.png" alt="Конь"></div>
+							<div class="main-wrapper__chess_pawn _ibg"><img src="@img/main/chess-pawn.png" alt="Пешка"></div>
+						</div>
 						<div class="main-wrapper__out"> <!-- <div class="main__media main-media"></div> -->
 							<div class="main-wrapper__city _ibg"><img src="@img/main/city.png" alt="Город"></div>
 						</div>
@@ -74,11 +78,11 @@
 					<img src="@img/session/step.png" alt="step">
 				</div>
 				<div class="session__content content-session">
-					<h2 class="content-session__title title">и Сеанс
+					<h2 id="about_tournament" class="content-session__title title">и Сеанс
 						<span class="title_red">одновременной игры в шахматы на 160 досках</span>
 						гроссмейстера О. Бендера
 					</h2>
-					<div id="about_tournament" class="content-session__table table-session">
+					<div class="content-session__table table-session">
 						<div class="table-session__body">
 							<div class="table-session__item">
 								<div class=" table-session__item_name">Место проведения:</div>
