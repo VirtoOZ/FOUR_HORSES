@@ -32,25 +32,21 @@
 	&__horses {
 		display: flex;
 		margin: 0px 6px 0px 0px;
+		&._active .logo__horse:nth-child(1) {
+			animation: horseInLeft 0.8s ease 0.6s;
+		}
+		&._active .logo__horse:nth-child(2) {
+			animation: horseInLeft 0.8s ease 0.4s;
+		}
+		&._active .logo__horse:nth-child(3) {
+			animation: horseInLeft 0.8s ease 0.2s;
+		}
+		&._active .logo__horse:nth-child(4) {
+			animation: horseInLeft 0.8s ease 0s;
+		}
 	}
 	// .logo__horse
 	&__horse {
-		// .logo__horse_1
-		&_1 {
-			animation: horseInLeft 0.8s ease 0.6s;
-		}
-		// .logo__horse_2
-		&_2 {
-			animation: horseInLeft 0.8s ease 0.4s;
-		}
-		// .logo__horse_3
-		&_3 {
-			animation: horseInLeft 0.8s ease 0.2s;
-		}
-		// .logo__horse_4
-		&_4 {
-			animation: horseInLeft 0.8s ease 0s;
-		}
 		@include adaptiv-value("margin-right", 2, 1, 1);
 		img {
 			@include adaptiv-value("width", 21.65, 18.75, 1);
@@ -81,6 +77,15 @@
 		line-height: 108%; /* 17.983px */
 		text-transform: uppercase;
 		flex: 0 0 452px;
+		transform: translate(50%, 0px);
+		opacity: 0;
+		transition:
+			transform 0.8s ease 0s,
+			opacity 0.8s ease 0s;
+		&._active {
+			transform: translate(0px, 0px);
+			opacity: 1;
+		}
 	}
 }
 //</HEADER>=======================================
