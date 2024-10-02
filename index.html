@@ -6,7 +6,7 @@
 	<meta http-equiv="Cache-Control" content="max-age=86500000" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Шахматный клуб четырёх коней. Присоединяйся к Васюкинскому турниру. Да начнётся игра!">
-	<link rel="stylesheet" href="css/style.min.css?_v=20241001150759">
+	<link rel="stylesheet" href="css/style.min.css?_v=20241002112211">
 	<link rel="icon" type="image/svg" href="img/icons/favicon.svg">
 	<title>FOUR_HORSES</title>
 </head>
@@ -59,10 +59,14 @@
 								<img src="img/main/elips-text.svg" alt="Текстстовый ореол">
 							</div>
 						</div>
-						<div class="main-wrapper__chess_king _ibg"><picture><source srcset="img/main/chess-king.webp" type="image/webp"><img src="img/main/chess-king.png" alt="Король"></picture></div>
-						<div class="main-wrapper__chess_queen _ibg"><picture><source srcset="img/main/chess-queen.webp" type="image/webp"><img src="img/main/chess-queen.png" alt="Королева"></picture></div>
-						<div class="main-wrapper__chess_horse _ibg"><picture><source srcset="img/main/chess-horse.webp" type="image/webp"><img src="img/main/chess-horse.png" alt="Конь"></picture></div>
-						<div class="main-wrapper__chess_pawn _ibg"><picture><source srcset="img/main/chess-pawn.webp" type="image/webp"><img src="img/main/chess-pawn.png" alt="Пешка"></picture></div>
+						<div class="main-wrapper__chess-behind">
+							<div class="main-wrapper__chess_king _ibg"><picture><source srcset="img/main/chess-king.webp" type="image/webp"><img src="img/main/chess-king.png" alt="Король"></picture></div>
+							<div class="main-wrapper__chess_queen _ibg"><picture><source srcset="img/main/chess-queen.webp" type="image/webp"><img src="img/main/chess-queen.png" alt="Королева"></picture></div>
+						</div>
+						<div class="main-wrapper__chess-front">
+							<div class="main-wrapper__chess_horse _ibg"><picture><source srcset="img/main/chess-horse.webp" type="image/webp"><img src="img/main/chess-horse.png" alt="Конь"></picture></div>
+							<div class="main-wrapper__chess_pawn _ibg"><picture><source srcset="img/main/chess-pawn.webp" type="image/webp"><img src="img/main/chess-pawn.png" alt="Пешка"></picture></div>
+						</div>
 						<div class="main-wrapper__out"> <!-- <div class="main__media main-media"></div> -->
 							<div class="main-wrapper__city _ibg"><picture><source srcset="img/main/city.webp" type="image/webp"><img src="img/main/city.png" alt="Город"></picture></div>
 						</div>
@@ -104,11 +108,11 @@
 					<picture><source srcset="img/session/step.webp" type="image/webp"><img src="img/session/step.png" alt="step"></picture>
 				</div>
 				<div class="session__content content-session">
-					<h2 class="content-session__title title">и Сеанс
+					<h2 id="about_tournament" class="content-session__title title">и Сеанс
 						<span class="title_red">одновременной игры в шахматы на 160 досках</span>
 						гроссмейстера О. Бендера
 					</h2>
-					<div id="about_tournament" class="content-session__table table-session">
+					<div class="content-session__table table-session">
 						<div class="table-session__body">
 							<div class="table-session__item">
 								<div class=" table-session__item_name">Место проведения:</div>
@@ -341,7 +345,7 @@
 </footer>
 	</div>
 	
-	<script src="js/app.min.js?_v=20241001150759"></script>
+	<script src="js/app.min.js?_v=20241002112211"></script>
 </body>
 
 </html>
