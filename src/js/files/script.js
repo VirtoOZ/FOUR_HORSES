@@ -377,7 +377,7 @@ function runningLine(runningLines) {
 			strBody.appendChild(strItemClone);
 		}
 		let progress = 1;
-		let speed = 5;
+		let speed = 3;
 		function mooveStr() {
 			progress -= speed;
 			if (progress <= itemWidth * -1) { progress = 0; }
