@@ -193,19 +193,27 @@ body {
 	position: relative;
 	// bottom: 0;
 	z-index: 3;
-	margin: 0px auto;
-	overflow: hidden;
-	@include adaptiv-value("width", 2223, 1640, 1);
+	width: 100vw;
 	// background-color: #f54932;
 	background-color: #e6230a;
+	// .running-line__container
+	&__container {
+		// margin: 0px auto;
+		// @include adaptiv-value("width", 2223, 1640, 1);
+		// overflow: hidden;
+	}
+	// .running-line__wrapper
+	&__wrapper {
+		// width: 100%;
+	}
 	// .running-line__body
 	&__body {
 		display: flex;
-		width: 200%;
-		animation: running-line 15s linear infinite;
+		// justify-content: space-around;
+		width: 100%;
+		// animation: running-line 10s linear infinite;
 		p {
 			white-space: nowrap;
-			width: 100%;
 			@include adaptiv-value("max-height", 60, 38, 1);
 			@include adaptiv-value("padding-top", 18, 10, 1);
 			@include adaptiv-value("padding-bottom", 18, 10, 1);
@@ -433,6 +441,7 @@ body {
 	// .main-wrapper__out
 	&__out {
 		position: absolute;
+		z-index: 2;
 		@include adaptiv-value("margin-right", -214.5, -129.43, 1);
 		@include adaptiv-value("width", 1623.5, 885.53, 1);
 		right: 0;

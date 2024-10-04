@@ -345,8 +345,6 @@ window.onload = function () { //когда весь контент загруз�
 						animItem.classList.remove('_active');
 					}
 				}
-				if ((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
-				}
 			}
 		}
 		function offset(el) {
@@ -355,13 +353,42 @@ window.onload = function () { //когда весь контент загруз�
 				scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 			return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
 		}
-
 		setTimeout(() => {
 			animOnScroll();
 		}, 300);
 	}
 	//</SCROLL-ANIMATION>=================================
 }
+//<RUNNING-STRING>=================================
+const runningLines = document.querySelectorAll('.running-line');
+if (runningLines.length > 0) {
+	runningLine(runningLines);
+}
+function runningLine(runningLines) {
+	for (let i = 0; i < runningLines.length; i++) {
+		const runningItem = runningLines[i];
+		let strBody = runningItem.querySelector('.running-line__body'); //container
+		let strItems = runningItem.querySelectorAll('p');
+		let itemWidth = 0;
+		for (let index = 0; index < strItems.length; index++) {
+			let strItem = strItems[index]; //content
+			let strItemClone = strItem.cloneNode(true);
+			itemWidth = strItem.offsetWidth;
+			strBody.appendChild(strItemClone);
+		}
+		let progress = 1;
+		let speed = 5;
+		function mooveStr() {
+			progress -= speed;
+			if (progress <= itemWidth * -1) { progress = 0; }
+			strBody.style.transform = 'translateX(' + (progress) + 'px)';
+			window.requestAnimationFrame(mooveStr);
+		}
+		mooveStr();
+	}
+}
+
+//</RUNNING-STRING>=================================
 //=================================
 // function _removeClasses(object, classToRemove) {
 // 	for (let index = 0; index < object.length; index++) {
