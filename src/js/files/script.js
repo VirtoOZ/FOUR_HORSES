@@ -1,7 +1,6 @@
 import { ibg } from "./functions.js";
 //когда весь контент загрузится
 window.onload = function () {
-	// window.addEventListener('resize', windowResize);
 	document.addEventListener("click", documentActions);
 	ibg();
 	// Actions (делигирование события click)
@@ -61,12 +60,6 @@ window.onload = function () {
 			e.preventDefault();
 		} */
 	}
-	// function windowResize(e) {
-	// 	let width = document.body.clientWidth;
-	// 	return width;
-	// }
-
-
 	//=================================
 	/* работа c шабкой при скролле
 	let headerElement = document.querySelector('.header');
@@ -206,7 +199,7 @@ window.onload = function () {
 	// Функция движения слайда
 	function moveSlider(current, slide, line) {
 		let sliderWidth = slide.offsetWidth + 20;
-		line.style.transform = `translateX(${-current * sliderWidth}px)`;
+		line.style.transform = `translate3d(${-current * sliderWidth}px, 0, 0)`;
 		slide == slider_2 ? currentSlide = current : slide == slider_1 ? slider_1_Count = current : '';
 		if (slide == slider_2) {
 			currentSlide = current;
@@ -232,20 +225,16 @@ window.onload = function () {
 		const city = document.querySelector('.main-wrapper__city');
 		const chessBehind = document.querySelector('.main-wrapper__chess-behind');
 		const chessFront = document.querySelector('.main-wrapper__chess-front');
-
 		//-Коэффициенты
 		const forSun = 3;
 		const forCity = 50;
 		const forChessBehind = 20;
 		const forChessFront = 50;
-
 		// Скорость анимации
 		const speed = 0.05;
-
 		// Объявление переменных
 		let positionX = 0, positionY = 0;
 		let coordXprocent = 0, coordYprocent = 0;
-
 		function setMouseParallaxStyle() {
 			const distX = coordXprocent - positionX;
 			const distY = coordYprocent - positionY;
@@ -269,8 +258,6 @@ window.onload = function () {
 			// Получение -ширины и высоты блока
 			const parallaxWidth = parallax.offsetWidth;
 			const parallaxHeight = parallax.offsetHeight;
-			// console.log(parallaxHeight);
-
 
 			// Ноль по середине
 			const coordX = e.pageX - parallaxWidth / 2;
@@ -344,41 +331,60 @@ window.onload = function () {
 	//<RUNNING-STRING>=================================
 	const runningLines = document.querySelectorAll('.running-line');
 	if (runningLines.length > 0) {
-		runningLines.addEventListener("resize", function (e) {
-			runningLine(runningLines);
+		let width = document.documentElement.clientWidth;
+		let limitCount = 0;
+		// windowResize();
+		runningLine(runningLines);
+
+		window.addEventListener("resize", function (e) {
+			limitCount++;
+			setTimeout(() => {
+				width = document.documentElement.clientWidth;
+				runningLine(runningLines);
+			}, 500);
 		});
 
-	}
-	function runningLine(runningLines) {
-		const browserWidth = document.documentElement.clientWidth;
-		for (let i = 0; i < runningLines.length; i++) {
-			const runningItem = runningLines[i];
-			let strBody = runningItem.querySelector('.running-line__body'); //container
-			let strItems = runningItem.querySelectorAll('p');
-			let itemWidth = 0;
-			for (let index = 0; index < strItems.length; index++) {
-				let strItem = strItems[index]; //content
-				itemWidth = strItem.clientWidth;
+		function runningLine(elems) {
+			for (let i = 0; i < elems.length; i++) {
+				const runningItem = elems[i];
+				let strBody = runningItem.querySelector('.running-line__body'); //container
+				let strItems = runningItem.querySelectorAll('p');
+				let itemWidth = 0;
 				let itemsWidth = 0;
-				console.log(itemsWidth);
-				const browserWidth = document.documentElement.clientWidth;
-				for (let ind = 0; itemsWidth < browserWidth; ind++) {
-					let strItemClone = strItem.cloneNode(true);
-					strBody.insertAdjacentElement('beforeend', strItemClone);
-					itemsWidth += itemWidth;
+				for (let index = 0; index < strItems.length; index++) {
+					let strItem = strItems[index]; //content
+					itemWidth = strItem.clientWidth;
+
+					// if (itemsWidth < width && limitCount < 1) {
+					// if (itemsWidth < width) {
+					// console.log(width);
+					for (let ind = 0; itemsWidth < width && limitCount <= 1; ind++) {
+						let strItemClone = strItem.cloneNode(true);
+						strBody.insertAdjacentElement('beforeend', strItemClone);
+						itemsWidth += itemWidth;
+						limitCount = 0;
+					}
+
 				}
+				let progress = 1;
+				let speed = 3;
+				function mooveStr() {
+					progress -= speed;
+					if (progress <= itemWidth * -1) { progress = 0; }
+					strBody.style.transform = 'translate3d(' + (progress) + 'px, 0, 0)';
+					window.requestAnimationFrame(mooveStr);
+				}
+				mooveStr();
 			}
-			let progress = 1;
-			let speed = 3;
-			function mooveStr() {
-				progress -= speed;
-				if (progress <= itemWidth * -1) { progress = 0; }
-				strBody.style.transform = 'translateX(' + (progress) + 'px)';
-				window.requestAnimationFrame(mooveStr);
-			}
-			mooveStr();
 		}
 	}
+	// function windowResize() {
+	// 	setTimeout(() => {
+	// 		// width = document.documentElement.clientWidth;
+
+	// 	}, 500);
+	// }
+
 
 	//</RUNNING-STRING>=================================
 }
