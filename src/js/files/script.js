@@ -1,20 +1,3 @@
-//<ANIM-SLIDE>=================================
-/*   Анимированное плавное открытие и закрытие блока.
-Может применяться к меню или выпадающему списку
-Выписано из видео фрилансера.
-В CSS нужно установить display: none; для родителя.
-*/
-// SlideUP
-// import { _slideUp } from "forms.js";
-// SlideDown
-// import { _slideDown } from "forms.js";
-//SlideToggLe
-// import { _slideToggle } from "forms.js";
-//</ANIM-SLIDE>=================================
-//<isMobile>=================================
-//Проверка на каком устройстве работаем
-// import { isMobile } from "./functions.js";
-//</isMobile>=================================
 import { ibg } from "./functions.js";
 window.onload = function () { //когда весь контент загрузится
 	document.addEventListener("click", documentActions);
@@ -97,7 +80,6 @@ window.onload = function () { //когда весь контент загруз�
 	let slider_1_PaginationWrapper = document.querySelector('.controls-stages__pagination');
 	let slider_1_ButtonNext = document.querySelector('.controls-stages__arrow-right');
 	let slider_1_ButtonPrev = document.querySelector('.controls-stages__arrow-left');
-
 	// Создаем точки по колличеству карточек
 	function buildBullets() {
 		if (slider_1_Length > 0) {
@@ -108,7 +90,6 @@ window.onload = function () { //когда весь контент загруз�
 		return;
 	}
 	buildBullets();
-
 	// Делаем активной текущую точку
 	function activeBullet(current) {
 		let paginationDotts = document.querySelectorAll('.controls-stages__dott');
@@ -121,7 +102,6 @@ window.onload = function () { //когда весь контент загруз�
 		}
 	}
 	activeBullet(slider_1_Count);
-
 	//</SLIDER-STAGE>=================================
 
 	//<SLIDER-PARTICIPANTS>=================================
@@ -133,17 +113,14 @@ window.onload = function () { //когда весь контент загруз�
 	let slider_2_paginationTotal = document.querySelector('.controls-participants__pagination-total>span');
 	let slider_2_ButtonNext = document.querySelector('.controls-participants__arrow-right');
 	let slider_2_ButtonPrev = document.querySelector('.controls-participants__arrow-left');
-
 	// Режим работы слайдера
 	let addCoef = 0;
 	addCoef = window.innerWidth < 640 ? addCoef = 1 :
 		window.innerWidth > 640 && window.innerWidth < 991 ? addCoef = 2 :
 			window.innerWidth > 992 ? addCoef = 3 : '';
-
 	// Получаем количество страниц если режим 2 или 3 слайда на страницу
 	let allSlide = Math.ceil(slider_2_Length / addCoef);
 	let currentSlide = 0;
-
 	// Функция состояния стрелок
 	function arrowStatus(slider, current, lenght) {
 		if (current == 0) {
@@ -185,7 +162,6 @@ window.onload = function () { //когда весь контент загруз�
 		}
 	}
 	PartPagination(currentSlide, allSlide, slider_2_Length, slider_2);
-
 	// Функция слайдер вперед
 	function nextSlide(current, all, length, slide, line) {
 		if (current >= 0 && current < all) {
@@ -205,7 +181,6 @@ window.onload = function () { //когда весь контент загруз�
 		}
 		moveSlider(current, slide, line);
 	}
-
 	// Функция Слайдер назад
 	function prevSlide(current, all, length, slide, line) {
 		if (current >= 0 && current <= all) {
@@ -220,7 +195,6 @@ window.onload = function () { //когда весь контент загруз�
 		}
 		moveSlider(current, slide, line);
 	}
-
 	// Функция движения слайда
 	function moveSlider(current, slide, line) {
 		let sliderWidth = slide.offsetWidth + 20;
@@ -322,9 +296,9 @@ window.onload = function () { //когда весь контент загруз�
 		} */
 	}
 	//</PARALAX>=================================
+
 	//<SCROLL-ANIMATION>=================================
 	const animItems = document.querySelectorAll('._anim-items');
-
 	if (animItems.length > 0) {
 		window.addEventListener('scroll', animOnScroll);
 		function animOnScroll() {
@@ -358,37 +332,43 @@ window.onload = function () { //когда весь контент загруз�
 		}, 300);
 	}
 	//</SCROLL-ANIMATION>=================================
-}
-//<RUNNING-STRING>=================================
-const runningLines = document.querySelectorAll('.running-line');
-if (runningLines.length > 0) {
-	runningLine(runningLines);
-}
-function runningLine(runningLines) {
-	for (let i = 0; i < runningLines.length; i++) {
-		const runningItem = runningLines[i];
-		let strBody = runningItem.querySelector('.running-line__body'); //container
-		let strItems = runningItem.querySelectorAll('p');
-		let itemWidth = 0;
-		for (let index = 0; index < strItems.length; index++) {
-			let strItem = strItems[index]; //content
-			let strItemClone = strItem.cloneNode(true);
-			itemWidth = strItem.offsetWidth;
-			strBody.appendChild(strItemClone);
-		}
-		let progress = 1;
-		let speed = 3;
-		function mooveStr() {
-			progress -= speed;
-			if (progress <= itemWidth * -1) { progress = 0; }
-			strBody.style.transform = 'translateX(' + (progress) + 'px)';
-			window.requestAnimationFrame(mooveStr);
-		}
-		mooveStr();
-	}
-}
 
-//</RUNNING-STRING>=================================
+	//<RUNNING-STRING>=================================
+	const runningLines = document.querySelectorAll('.running-line');
+	if (runningLines.length > 0) {
+		runningLine(runningLines);
+	}
+	function runningLine(runningLines) {
+		for (let i = 0; i < runningLines.length; i++) {
+			const runningItem = runningLines[i];
+			let strBody = runningItem.querySelector('.running-line__body'); //container
+			let strItems = runningItem.querySelectorAll('p');
+			let itemWidth = 0;
+			for (let index = 0; index < strItems.length; index++) {
+				let strItem = strItems[index]; //content
+				itemWidth = strItem.clientWidth;
+				let itemsWidth = 0;
+				const browserWidth = document.documentElement.clientWidth;
+				for (let ind = 0; itemsWidth < browserWidth; ind++) {
+					let strItemClone = strItem.cloneNode(true);
+					strBody.insertAdjacentElement('beforeend', strItemClone);
+					itemsWidth += itemWidth;
+				}
+			}
+			let progress = 1;
+			let speed = 3;
+			function mooveStr() {
+				progress -= speed;
+				if (progress <= itemWidth * -1) { progress = 0; }
+				strBody.style.transform = 'translateX(' + (progress) + 'px)';
+				window.requestAnimationFrame(mooveStr);
+			}
+			mooveStr();
+		}
+	}
+
+	//</RUNNING-STRING>=================================
+}
 //=================================
 // function _removeClasses(object, classToRemove) {
 // 	for (let index = 0; index < object.length; index++) {
