@@ -53,8 +53,8 @@
 	&__horse {
 		@include adaptiv-value("margin-right", 2, 1, 1);
 		img {
-			@include adaptiv-value("width", 21.65, 18.75, 1);
-			@include adaptiv-value("height", 31.2, 27, 1);
+			@include adaptiv-value("width", 22, 19, 1);
+			@include adaptiv-value("height", 31, 27, 1);
 		}
 		@keyframes horseInLeft {
 			0% {
@@ -76,7 +76,7 @@
 	// .logo__text
 	&__text {
 		color: #595653;
-		@include adaptiv-value("font-size", 16.651, 14.418, 1);
+		@include adaptiv-value("font-size", 17, 14, 1);
 		font-weight: 700;
 		line-height: 108%; /* 17.983px */
 		text-transform: uppercase;

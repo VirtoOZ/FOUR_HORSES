@@ -1,5 +1,7 @@
 import { ibg } from "./functions.js";
-window.onload = function () { //когда весь контент загрузится
+//когда весь контент загрузится
+window.onload = function () {
+	// window.addEventListener('resize', windowResize);
 	document.addEventListener("click", documentActions);
 	ibg();
 	// Actions (делигирование события click)
@@ -59,6 +61,12 @@ window.onload = function () { //когда весь контент загруз�
 			e.preventDefault();
 		} */
 	}
+	// function windowResize(e) {
+	// 	let width = document.body.clientWidth;
+	// 	return width;
+	// }
+
+
 	//=================================
 	/* работа c шабкой при скролле
 	let headerElement = document.querySelector('.header');
@@ -336,9 +344,13 @@ window.onload = function () { //когда весь контент загруз�
 	//<RUNNING-STRING>=================================
 	const runningLines = document.querySelectorAll('.running-line');
 	if (runningLines.length > 0) {
-		runningLine(runningLines);
+		runningLines.addEventListener("resize", function (e) {
+			runningLine(runningLines);
+		});
+
 	}
 	function runningLine(runningLines) {
+		const browserWidth = document.documentElement.clientWidth;
 		for (let i = 0; i < runningLines.length; i++) {
 			const runningItem = runningLines[i];
 			let strBody = runningItem.querySelector('.running-line__body'); //container
@@ -348,6 +360,7 @@ window.onload = function () { //когда весь контент загруз�
 				let strItem = strItems[index]; //content
 				itemWidth = strItem.clientWidth;
 				let itemsWidth = 0;
+				console.log(itemsWidth);
 				const browserWidth = document.documentElement.clientWidth;
 				for (let ind = 0; itemsWidth < browserWidth; ind++) {
 					let strItemClone = strItem.cloneNode(true);
