@@ -331,44 +331,28 @@ window.onload = function () {
 	//<RUNNING-STRING>=================================
 	const runningLines = document.querySelectorAll('.running-line');
 	if (runningLines.length > 0) {
-		let width = document.documentElement.clientWidth;
-		let limitCount = 0;
-		// windowResize();
-		runningLine(runningLines);
-
-		window.addEventListener("resize", function (e) {
-			limitCount++;
-			setTimeout(() => {
-				width = document.documentElement.clientWidth;
-				runningLine(runningLines);
-			}, 500);
-		});
-
-		function runningLine(elems) {
-			for (let i = 0; i < elems.length; i++) {
-				const runningItem = elems[i];
-				let strBody = runningItem.querySelector('.running-line__body'); //container
-				let strItems = runningItem.querySelectorAll('p');
-				let itemWidth = 0;
-				let itemsWidth = 0;
-				for (let index = 0; index < strItems.length; index++) {
-					let strItem = strItems[index]; //content
-					itemWidth = strItem.clientWidth;
-
-					// if (itemsWidth < width && limitCount < 1) {
-					// if (itemsWidth < width) {
-					// console.log(width);
-					for (let ind = 0; itemsWidth < width && limitCount <= 1; ind++) {
-						let strItemClone = strItem.cloneNode(true);
-						strBody.insertAdjacentElement('beforeend', strItemClone);
-						itemsWidth += itemWidth;
-						limitCount = 0;
-					}
-
-				}
+		for (let index = 0; index < runningLines.length; index++) {
+			let runningLine = runningLines[index];
+			if (runningLine) {
 				let progress = 1;
 				let speed = 3;
+				let itemWidth = 0;
+				let itemsWidth = 0;
+				let strBody = runningLine.firstElementChild;
+				let strItemsP = strBody.children;
+				let strItemP;
+				let cloneStrP;
+				for (let index = 0; index < strItemsP.length; index++) {
+					strItemP = strItemsP[index];
+				}
 				function mooveStr() {
+					let width = document.documentElement.clientWidth;
+					itemWidth = strItemP.clientWidth;
+					for (let ind = 0; itemsWidth < width; ind++) {
+						cloneStrP = strItemP.cloneNode(true);
+						strBody.insertAdjacentElement('beforeend', cloneStrP);
+						itemsWidth += itemWidth;
+					}
 					progress -= speed;
 					if (progress <= itemWidth * -1) { progress = 0; }
 					strBody.style.transform = 'translate3d(' + (progress) + 'px, 0, 0)';
@@ -378,14 +362,6 @@ window.onload = function () {
 			}
 		}
 	}
-	// function windowResize() {
-	// 	setTimeout(() => {
-	// 		// width = document.documentElement.clientWidth;
-
-	// 	}, 500);
-	// }
-
-
 	//</RUNNING-STRING>=================================
 }
 //=================================
