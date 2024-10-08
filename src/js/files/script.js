@@ -1,6 +1,15 @@
 import { ibg } from "./functions.js";
 //когда весь контент загрузится
 window.onload = function () {
+	let width;
+	let addCoef;
+	function resizeWidth() {
+		width = document.documentElement.clientWidth;
+		getSliderMod();
+	}
+	resizeWidth();
+	// Ловим событие измения экрана и делаем пересчёт
+	window.addEventListener('resize', resizeWidth);
 	document.addEventListener("click", documentActions);
 	ibg();
 	// Actions (делигирование события click)
@@ -114,11 +123,15 @@ window.onload = function () {
 	let slider_2_paginationTotal = document.querySelector('.controls-participants__pagination-total>span');
 	let slider_2_ButtonNext = document.querySelector('.controls-participants__arrow-right');
 	let slider_2_ButtonPrev = document.querySelector('.controls-participants__arrow-left');
+
 	// Режим работы слайдера
-	let addCoef = 0;
-	addCoef = window.innerWidth < 640 ? addCoef = 1 :
-		window.innerWidth > 640 && window.innerWidth < 991 ? addCoef = 2 :
-			window.innerWidth > 992 ? addCoef = 3 : '';
+	function getSliderMod() {
+
+		width < 640 ? addCoef = 1 :
+			width > 640 && width < 991 ? addCoef = 2 :
+				width > 992 ? addCoef = 3 : '';
+		// addCoef();
+	}
 	// Получаем количество страниц если режим 2 или 3 слайда на страницу
 	let allSlide = Math.ceil(slider_2_Length / addCoef);
 	let currentSlide = 0;
@@ -151,7 +164,7 @@ window.onload = function () {
 		arrowStatus(slider_2, currentSlide, allSlide);
 	}
 	// Функция расчёта пагинации
-	function PartPagination(current, all, length, slider) {
+	function partPagination(current, all, length, slider) {
 		if (slider == slider_2) {
 			slider_2_paginationTotal.innerHTML = length;
 			if (all > 1 && current < all - 1) {
@@ -162,23 +175,23 @@ window.onload = function () {
 			}
 		}
 	}
-	PartPagination(currentSlide, allSlide, slider_2_Length, slider_2);
+	partPagination(currentSlide, allSlide, slider_2_Length, slider_2);
 	// Функция слайдер вперед
 	function nextSlide(current, all, length, slide, line) {
 		if (current >= 0 && current < all) {
 			current++;
-			PartPagination(current, all, length, slide);
+			partPagination(current, all, length, slide);
 		}
 		if (current == all) {
 			current++;
-			PartPagination(current, all, length, slide);
+			partPagination(current, all, length, slide);
 			if (slide == slider_1) {
 				current = all - 1;
 			}
 		}
 		if (current > all) {
 			current = 0;
-			PartPagination(current, all, length, slide);
+			partPagination(current, all, length, slide);
 		}
 		moveSlider(current, slide, line);
 	}
@@ -192,7 +205,7 @@ window.onload = function () {
 			if (current <= -1) {
 				current = all - 1;
 				slider_2_PaginationCurrent.innerHTML = length;
-			} else PartPagination(current, all, length, slide);
+			} else partPagination(current, all, length, slide);
 		}
 		moveSlider(current, slide, line);
 	}
@@ -210,7 +223,6 @@ window.onload = function () {
 			arrowStatus(slider_1, current, slider_1_Length);
 		}
 	}
-
 	// Автопрокрутка слайдов
 	setInterval(() => {
 		nextSlide(currentSlide, allSlide, slider_2_Length, slider_2, slider_2_Line);
@@ -336,29 +348,48 @@ window.onload = function () {
 			if (runningLine) {
 				let progress = 1;
 				let speed = 3;
-				let itemWidth = 0;
-				let itemsWidth = 0;
+				let itemWidth = 0, itemsWidth = 0;
 				let strBody = runningLine.firstElementChild;
 				let strItemsP = strBody.children;
-				let strItemP;
-				let cloneStrP;
+				let strItemP,
+					cloneStrP;
+				// width;
+				// получаем конкретный элемент P
 				for (let index = 0; index < strItemsP.length; index++) {
 					strItemP = strItemsP[index];
 				}
-				function mooveStr() {
-					let width = document.documentElement.clientWidth;
+				// Подсчёт ширины
+				let calcWidth = () => {
+					// width = document.documentElement.clientWidth;
 					itemWidth = strItemP.clientWidth;
-					for (let ind = 0; itemsWidth < width; ind++) {
+					return itemWidth;
+				}
+				// Добавление клона P если ширина недостаточная
+				function addClone() {
+					// console.log(width);
+					for (let index = 0; itemsWidth < width; index++) {
 						cloneStrP = strItemP.cloneNode(true);
 						strBody.insertAdjacentElement('beforeend', cloneStrP);
 						itemsWidth += itemWidth;
 					}
+				}
+				// Получение обновленного боди
+				let getNewStr = () => {
+					calcWidth();
+					addClone();
+					return strBody, itemWidth, itemsWidth;
+				}
+				getNewStr();
+
+				// Запуск анимации движения
+				function runStr() {
 					progress -= speed;
 					if (progress <= itemWidth * -1) { progress = 0; }
 					strBody.style.transform = 'translate3d(' + (progress) + 'px, 0, 0)';
-					window.requestAnimationFrame(mooveStr);
+					window.requestAnimationFrame(runStr);
+					// console.log(width);
 				}
-				mooveStr();
+				runStr();
 			}
 		}
 	}
