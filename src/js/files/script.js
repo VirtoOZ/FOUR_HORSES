@@ -1,17 +1,9 @@
 import { ibg } from "./functions.js";
 //когда весь контент загрузится
 window.onload = function () {
-	let width;
-	let addCoef;
-	function resizeWidth() {
-		width = document.documentElement.clientWidth;
-		getSliderMod();
-	}
-	resizeWidth();
-	// Ловим событие измения экрана и делаем пересчёт
-	window.addEventListener('resize', resizeWidth);
-	document.addEventListener("click", documentActions);
 	ibg();
+	let width, addCoef, allSlide, slider_2_Length, resizeWidth, calcWidth, addClone;
+	document.addEventListener("click", documentActions);
 	// Actions (делигирование события click)
 	function documentActions(e) {
 		const targetElement = e.target; // кладем в переменную нажатый объект
@@ -70,17 +62,7 @@ window.onload = function () {
 		} */
 	}
 	//=================================
-	/* работа c шабкой при скролле
-	let headerElement = document.querySelector('.header');
-	const callback = function (entries, observer) {
-		if (entries[0].isIntersecting) {
-			headerElement.classList.remove('_scroll');
-		} else {
-			headerElement.classList.add('_scroll');
-		}
-	};
-	const headerObserver = new IntersectionObserver(callback);
-	headerObserver.observe(headerElement); */
+
 	//<SLIDER-STAGE>=================================
 	let slider_1 = document.querySelector('.stages__slider');
 	let slider_1_Line = document.querySelector('.stages__items');
@@ -118,22 +100,22 @@ window.onload = function () {
 	let slider_2 = document.querySelector('.participants__body');
 	let slider_2_Line = document.querySelector('.participants__row');
 	let slider_2_Item = document.querySelectorAll('.participants__column');
-	let slider_2_Length = slider_2_Item.length;
+	slider_2_Length = slider_2_Item.length;
 	let slider_2_PaginationCurrent = document.querySelector('.controls-participants__pagination-current');
 	let slider_2_paginationTotal = document.querySelector('.controls-participants__pagination-total>span');
 	let slider_2_ButtonNext = document.querySelector('.controls-participants__arrow-right');
 	let slider_2_ButtonPrev = document.querySelector('.controls-participants__arrow-left');
-
 	// Режим работы слайдера
 	function getSliderMod() {
-
 		width < 640 ? addCoef = 1 :
 			width > 640 && width < 991 ? addCoef = 2 :
 				width > 992 ? addCoef = 3 : '';
-		// addCoef();
 	}
 	// Получаем количество страниц если режим 2 или 3 слайда на страницу
-	let allSlide = Math.ceil(slider_2_Length / addCoef);
+	function getSlidesLength() {
+		allSlide = Math.ceil(slider_2_Length / addCoef);
+	}
+	getSlidesLength();
 	let currentSlide = 0;
 	// Функция состояния стрелок
 	function arrowStatus(slider, current, lenght) {
@@ -345,85 +327,50 @@ window.onload = function () {
 	if (runningLines.length > 0) {
 		for (let index = 0; index < runningLines.length; index++) {
 			let runningLine = runningLines[index];
-			if (runningLine) {
-				let progress = 1;
-				let speed = 3;
-				let itemWidth = 0, itemsWidth = 0;
-				let strBody = runningLine.firstElementChild;
-				let strItemsP = strBody.children;
-				let strItemP,
-					cloneStrP;
-				// width;
-				// получаем конкретный элемент P
-				for (let index = 0; index < strItemsP.length; index++) {
-					strItemP = strItemsP[index];
-				}
+			let itemWidth = 0, itemsWidth = 0;
+			let strBody = runningLine.firstElementChild;
+			let strItemsP = strBody.children;
+			let cloneStrP;
+			// получаем конкретный элемент P
+			for (let index = 0; index < strItemsP.length; index++) {
+				let strItemP = strItemsP[index];
 				// Подсчёт ширины
-				let calcWidth = () => {
-					// width = document.documentElement.clientWidth;
+				calcWidth = function () {
+					width = document.documentElement.clientWidth;
 					itemWidth = strItemP.clientWidth;
-					return itemWidth;
-				}
+				};
 				// Добавление клона P если ширина недостаточная
-				function addClone() {
-					// console.log(width);
-					for (let index = 0; itemsWidth < width; index++) {
+				addClone = function () {
+					for (let index = 0; itemsWidth <= width; index++) {
 						cloneStrP = strItemP.cloneNode(true);
 						strBody.insertAdjacentElement('beforeend', cloneStrP);
 						itemsWidth += itemWidth;
 					}
-				}
-				// Получение обновленного боди
-				let getNewStr = () => {
+				};
+				resizeWidth = function () {
 					calcWidth();
 					addClone();
-					return strBody, itemWidth, itemsWidth;
-				}
-				getNewStr();
-
+					calcWidth();
+					getSliderMod();
+					getSlidesLength();
+				};
+				resizeWidth();
+				let progress = 1;
+				let speed = 2;
 				// Запуск анимации движения
 				function runStr() {
+					width = document.documentElement.clientWidth;
+					itemWidth = strItemP.clientWidth;
 					progress -= speed;
 					if (progress <= itemWidth * -1) { progress = 0; }
 					strBody.style.transform = 'translate3d(' + (progress) + 'px, 0, 0)';
 					window.requestAnimationFrame(runStr);
-					// console.log(width);
 				}
 				runStr();
 			}
 		}
 	}
+	// Ловим событие измения экрана и делаем пересчёт
+	window.addEventListener('resize', resizeWidth);
 	//</RUNNING-STRING>=================================
 }
-//=================================
-// function _removeClasses(object, classToRemove) {
-// 	for (let index = 0; index < object.length; index++) {
-// 		const element = object[index];
-// 		element.classList.remove(classToRemove);
-// 	}
-// }
-//=================================
-//<BURGER>=================================
-// const iconMenu = document.querySelector('.icon-menu');//находим класс icon-menu
-// const menuBody = document.querySelector('.menu__body');//находим класс menu__body
-// const headerBody = document.querySelector('.header__body');//находим класс menu__body
-// if (iconMenu) {//Проверяем есть ли icon-menu
-// 	iconMenu.addEventListener("click", function (e) {//вещам событие при клике мыши
-// 		document.body.classList.toggle('_lock');//Для Body даем класс Lock для отключения прокрутки
-// 		iconMenu.classList.toggle('_active');//добавляем класс active icon-menu
-// 		menuBody.classList.toggle('_active');//добавляем класс active menu__body
-// 		headerBody.classList.toggle('_active');//добавляем класс active menu__body
-// 		// _slideToggle(menuBody, 500);
-// 	});
-// };
-//</BURGER>=================================
-
-//<BURGER SIDE-MENU>=================================
-// let menuPageBurger = document.querySelector('.menu-page__burger');
-// let menuPageBody = document.querySelector('.menu-page__body');
-// menuPageBurger.addEventListener("click", function (e) {
-// 	// menuPageBody.classList.toggle('_active');
-// 	menuPageBurger.classList.toggle('_active');
-// 	_slideToggle(menuPageBody, 500);
-// });
-//</BURGER SIDE-MENU>=================================
