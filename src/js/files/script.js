@@ -359,8 +359,8 @@ window.onload = function () {
 				let speed = 2;
 				// Запуск анимации движения
 				function runStr() {
-					width = document.documentElement.clientWidth;
-					itemWidth = strItemP.clientWidth;
+					// width = document.documentElement.clientWidth;
+					// itemWidth = strItemP.clientWidth;
 					progress -= speed;
 					if (progress <= itemWidth * -1) { progress = 0; }
 					strBody.style.transform = 'translate3d(' + (progress) + 'px, 0, 0)';
