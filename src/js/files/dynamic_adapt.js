@@ -1,9 +1,5 @@
-//Dynamic Adapt v.1
 //HTML data-da="where(uniq class name),position(digi), when(breakpoint)"
 //e.x. data-da="item,2,992"
-//A. E. 2020
-
-"use strict";
 
 (function () {
 	let originalPositions = [];
